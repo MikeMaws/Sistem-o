@@ -1,12 +1,13 @@
 <div class="container ">
   <div class="col-md-5 col-md-offset-3">
     <div class="panel panel-default devise-bs ">
+      <%= devise_error_messages! %>
       <div class="panel-heading">
         <h4>Entrar</h4>
       </div>
       <div class="panel-body">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
-          <div class="form-group">
+     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
+        <div class="form-group">
             <%= f.label :email %>
             <%= f.email_field :email, autofocus: true, class: 'form-control' %>
           </div>
