@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 def after_sign_in_path_for(resource_or_scope)
   if current_user.aluno?
-     alunos_index_path
+     alunos_linha_do_tempo_path
   else 
     if current_user.professor?
      professores_index_path
