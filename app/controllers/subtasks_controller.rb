@@ -16,6 +16,6 @@
       
 
       def subtask_params
-        params[:subtask].permit(:task_id,:status,:nome,:descricao,:avaliativa,:entrega, :puclets_attributes => [:nome])
+        params.require(:subtask).permit(:task_id,:status,:nome,:descricao,:avaliativa,:entrega, :puclets_attributes => [:nome])
       end
   end

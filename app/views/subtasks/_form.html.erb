@@ -16,14 +16,16 @@
               <%= f.label :avaliativa %>
              <%= f.check_box :avaliativa %>
           </div>
-          
+            
            <div  class="form-group">
-           <%= f.fields_for :puclets do |ff| %>
-            <%= ff.label :name %>
-            <%= ff.text_field :name %>
+            <%= f.fields_for :puclets, Puclet.new do |f| %>
+              <%=render "puclet_fields", f: f%>
             <% end %>
           </div>
-          
+
+          <%= link_to_add_puclets "Adicionar Puclet", f, :puclets%>
+
+          <p/>
           <div class="form-group">
               <%= f.label :entrega %>
               <%= f.date_select(:entrega,:start_year => 1950) %>
@@ -31,8 +33,8 @@
               <%= f.submit "Confirmar", class: 'btn btn-primary' %>
               <% end %>
           </div>
-    
- 
+
+
 
 
 
