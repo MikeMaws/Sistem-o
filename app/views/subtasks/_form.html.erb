@@ -1,0 +1,42 @@
+
+      <div class="panel-heading">
+        <h4>SubTarefa</h4>
+      </div>
+      <div class="panel-body">
+        <%= form_for([@task, @task.subtasks.build]) do |f| %>
+          <div class="form-group">
+             <%= f.label :nome %>
+             <%= f.text_field :nome, autofocus: true, placeholder: "Nome da tarefa",class: 'form-control' %>
+          </div>
+          <div class="form-group">
+             <%= f.label :descricao %>
+             <%= f.text_area :descricao,placeholder: "Digite a descricão da tarefa",class: 'form-control' %>
+          </div>
+          <div class="form-group">
+              <%= f.label :avaliativa %>
+             <%= f.check_box :avaliativa %>
+          </div>
+          
+           <div  class="form-group">
+           <%= f.fields_for :puclets do |ff| %>
+            <%= ff.label :name %>
+            <%= ff.text_field :name %>
+            <% end %>
+          </div>
+          
+          <div class="form-group">
+              <%= f.label :entrega %>
+              <%= f.date_select(:entrega,:start_year => 1950) %>
+          </div>
+              <%= f.submit "Confirmar", class: 'btn btn-primary' %>
+              <% end %>
+          </div>
+    
+ 
+
+
+
+
+
+
+ 

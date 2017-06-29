@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: false
+  nome: MyString
+  descricao: MyText
+  avaliativa: false
+  entrega: 2017-06-27
+  task: one
+
+two:
+  status: false
+  nome: MyString
+  descricao: MyText
+  avaliativa: false
+  entrega: 2017-06-27
+  task: two

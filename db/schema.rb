@@ -10,11 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622185159) do
+ActiveRecord::Schema.define(version: 20170627182943) do
 
   create_table "nivels", force: :cascade do |t|
     t.integer "posicao"
     t.string "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "puclets", force: :cascade do |t|
+    t.string "nome"
+    t.integer "subtask_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subtask_id"], name: "index_puclets_on_subtask_id"
+  end
+
+  create_table "subtasks", force: :cascade do |t|
+    t.boolean "status"
+    t.string "nome"
+    t.text "descricao"
+    t.boolean "avaliativa"
+    t.date "entrega"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_subtasks_on_task_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.boolean "status"
+    t.string "nome"
+    t.text "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

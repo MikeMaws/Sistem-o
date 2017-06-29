@@ -1,0 +1,2 @@
+class PucletsController < ApplicationController
+end

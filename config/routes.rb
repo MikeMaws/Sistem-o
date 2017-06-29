@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :tasks do 
+    resources :subtasks do
+      resources :puclets
+    end
+  end
+  
   resources :nivels
   get 'control_users/index'
   get 'alunos/linha_do_tempo'

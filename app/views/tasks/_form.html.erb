@@ -1,0 +1,47 @@
+ <div class="container ">
+    <div class="col-md-5 col-md-offset-3">
+      <div class="panel panel-default ">
+
+      <%= form_with(model: task, local: true) do |form| %> 
+        <div class="panel panel-default devise-bs ">
+               <% if task.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+        
+              <ul>
+              <% task.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          
+        <div class="panel-heading">
+          <h4>Criar task</h4>
+        </div>
+        
+          <div class="form-group">
+            <%= form.label :status %>
+            <%= form.check_box :status, id: :task_status %>
+          </div>
+        
+          <div class="form-group">
+            <%= form.label :nome %>
+            <%= form.text_field :nome, id: :task_nome, autofocus: true , class: 'form-control' %>
+          </div>
+        
+          <div class="form-group">
+            <%= form.label :descricao %>
+            <%= form.text_area :descricao, id: :task_descricao, class: 'form-control' %>
+          </div>
+        
+          <div class="actions">
+           <%= form.submit "Criar", class: 'btn btn-primary' %>
+            <% end %>
+           <%= link_to 'Voltar', tasks_path %>
+          </div>
+     
+       </div>
+    </div>
+</div>
+
