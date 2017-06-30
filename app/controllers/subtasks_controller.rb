@@ -6,7 +6,7 @@
       @subtask = @task.subtasks.create(subtask_params)
       redirect_to @task
     end
-      
+    
       private 
       
       # Encontrar a task

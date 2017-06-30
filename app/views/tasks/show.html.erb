@@ -10,18 +10,23 @@
       <div class="panel panel-info ">
         <p id="notice"><%= notice %></p>
       </div>
-      <div class="panel panel-primary">  
+      <div class="panel panel-primary"> 
         <div class="row"> 
-          <div class="col-md-9"> 
+          <div class="col-md-12"> 
             <H4><strong> Nome: </strong> <%= @task.nome %> </H4>
-          </div>
-          <div class="3"> 
-            <H4><strong> Ativa: </strong> <%=  @task.status %> </H4>
           </div>
         </div>
         <div class="row"> 
           <div class="col-md-12"> 
             <H4><strong> Objetivo: </strong>  <%= @task.descricao %> </H4>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col-md-9"> 
+            <H4><strong> Abertura: </strong> <%= @task.abertura %> </H4>
+          </div>
+          <div class="3"> 
+            <H4><strong> Ativa: </strong> <%=  @task.status %> </H4>
           </div>
         </div>
         <div id= "todo_items_wrapper" class="panel panel-default">

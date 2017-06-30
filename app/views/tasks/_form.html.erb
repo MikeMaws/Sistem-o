@@ -21,18 +21,23 @@
         </div>
         
           <div class="form-group">
-            <%= form.label :status %>
+            <%= form.label "Ativo: " %>
             <%= form.check_box :status, id: :task_status %>
           </div>
         
           <div class="form-group">
-            <%= form.label :nome %>
+            <%= form.label "Nome: " %>
             <%= form.text_field :nome, id: :task_nome, autofocus: true , class: 'form-control' %>
           </div>
         
           <div class="form-group">
-            <%= form.label :descricao %>
+            <%= form.label "Objetivo: " %>
             <%= form.text_area :descricao, id: :task_descricao, class: 'form-control' %>
+          </div>
+          
+          <div class="form-group">
+            <%= form.label "Data Abertura: " %>
+            <%= form.date_select :abertura, id: :task_abertura, class: 'form-control' %>
           </div>
         
           <div class="actions">
