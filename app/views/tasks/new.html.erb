@@ -1,4 +1,6 @@
+<% if policy(@task).new? %>
 <%= render 'form', task: @task %>
+<% end %>
 
         
    

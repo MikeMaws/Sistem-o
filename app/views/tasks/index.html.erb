@@ -1,45 +1,52 @@
-<div class="container ">
-  <div class="col-md-5 col-md-offset-3">
-    <div class="panel panel-default devise-bs ">
-      <p id="notice"><%= notice %></p>
-      <div class="panel-heading">
-        <h1>Tasks</h1>
-      </div>
+<body>
+
+<% if policy(@tasks).index? %>
+  <div id="wrapper">
+    <%= render partial: "professores/partial_index" %>
+      <div id="page-wrapper">
       
-        <div class="panel-body"  >
-          <table >
-            <thead>
-              <tr class="form-group" >
-                <th>Id</th>
-                <th>Status</th>
-                <th>Nome</th>
-
-              </tr>
-            </thead>
-            
-            <tbody>
-              <% @tasks.each do |task| %>
-                <tr>
-                  <td><%= task.id %></td>
-                  <td><%= task.status %></td>
-                  <td><%= task.nome %></td>
-                  <td><%= link_to 'Show', task %></td>
-                  <td><%= link_to 'Edit', edit_task_path(task) %></td>
-                  <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-
-        <br>
+        <div class="container">
+          <div class="col-md-12">
+            <div class="panel-heading">
+                <h1>Tasks</h1>
+              </div>
+                <div class="panel-body"  >
+                  <table >
+                    <thead>
+                      <tr class="form-group" >
+                        <th>Id</th>
+                        <th>Status</th>
+                        <th>Nome</th>
         
-        <%= link_to 'New Task', new_task_path %>
-
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                      <% @tasks.each do |task| %>
+                        <tr>
+                          <td><%= task.id %></td>
+                          <td><%= task.status %></td>
+                          <td><%= task.nome %></td>
+                          <td><%= link_to 'Show', task %></td>
+                          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+                          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+        
+                <br>
+                
+                <%= link_to 'New Task', new_task_path %>
+        
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    
     </div>
-  </div>
-</div>
+  <% end %>    
+</body>
 
 
 

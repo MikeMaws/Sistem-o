@@ -7,7 +7,7 @@ def after_sign_in_path_for(resource_or_scope)
      alunos_linha_do_tempo_path
   else 
     if current_user.professor?
-     professores_index_path
+     professores_linha_do_tempo_path
     else
          if current_user.admin?
          administradores_index_path

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'alunos/grafico_habilidade'
   get 'alunos/grafico_progresso'
   get 'alunos/profile'
-  get 'professores/index'
+  get 'professores/linha_do_tempo'
   get 'administradores/index'
   devise_for :users
   devise_scope :user do
