@@ -1,53 +1,50 @@
 <div class="container ">
-  <div class="col-md-5 col-md-offset-3">
-    <div class="panel panel-default devise-bs ">
-     <p id="notice"><%= notice %></p>
-      <div class="panel-heading">
-        <h4>Cadastrar</h4>
+  <div class="col-md-8 col-md-offset-2">
+     
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <H2 align = "center"> <strong>Tarefa Número:</strong> <%= @task.id %> </H2>
+    </div>
+    
+    <div class="panel-body">
+      <div class="panel panel-info ">
+        <p id="notice"><%= notice %></p>
       </div>
-      <div class="panel-body">
-        
-          <div class="form-group">
-             <p> <strong>Id:</strong>
-                 <%= @task.id %>
-            </p>
+      <div class="panel panel-primary">  
+        <div class="row"> 
+          <div class="col-md-9"> 
+            <H4><strong> Nome: </strong> <%= @task.nome %> </H4>
           </div>
-        
-          <div class="form-group">
-             <p> <strong>Nome:</strong>
-                 <%= @task.nome %>
-            </p>
+          <div class="3"> 
+            <H4><strong> Ativa: </strong> <%=  @task.status %> </H4>
           </div>
-          
-          <div class="form-group">
-             <p> <strong>Descrição:</strong>
-                 <%= @task.descricao %>
-            </p>
+        </div>
+        <div class="row"> 
+          <div class="col-md-12"> 
+            <H4><strong> Objetivo: </strong>  <%= @task.descricao %> </H4>
           </div>
-          
-          <div class="form-group">
-             <p> <strong>Status:</strong>
-                 <%= @task.status %>
-            </p>
-          </div>
-          
-          <div id= "todo_items_wrapper">
-            <%= render @task.subtasks %>
-              <div id "form" class="form-group">
-                  <%= render "subtasks/form" %>
-              </div>
-          </div>
-          
+        </div>
+        <div id= "todo_items_wrapper" class="panel panel-default">
+          <div class="row">
+            <div class="col-md-12"> 
+              <%= render @task.materialdidaticos %>
+              <%= render @task.subtasks %>
+            </div>  
+          </div>  
+        </div>      
+        <div id "form" class="form-group">
+          <%= render "materialdidaticos/form" %>
+          <%= render "subtasks/form" %>
+        </div>
           <%= link_to 'Edit', edit_task_path(@task) %> |
           <%= link_to 'Back', tasks_path %>
-          
-          
-        
+        </div>
       </div>
-    
     </div>
   </div>
 </div>
+
+
 
 
 

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+ 
   resources :tasks do 
+    resources :materialdidaticos
     resources :subtasks do
       resources :puclets
     end

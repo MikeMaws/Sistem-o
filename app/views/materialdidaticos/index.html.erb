@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Materialdidaticos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descricao</th>
+      <th>Link</th>
+      <th>Task</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materialdidaticos.each do |materialdidatico| %>
+      <tr>
+        <td><%= materialdidatico.descricao %></td>
+        <td><%= materialdidatico.link %></td>
+        <td><%= materialdidatico.task %></td>
+        <td><%= link_to 'Show', materialdidatico %></td>
+        <td><%= link_to 'Edit', edit_materialdidatico_path(materialdidatico) %></td>
+        <td><%= link_to 'Destroy', materialdidatico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Materialdidatico', new_materialdidatico_path %>
