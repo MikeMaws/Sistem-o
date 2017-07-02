@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
  
+  resources :material_didaticos
   resources :tasks do 
-    resources :materialdidaticos
-    resources :subtasks do
+      resources :subtasks do
       resources :puclets
     end
   end

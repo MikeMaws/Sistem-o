@@ -7,6 +7,7 @@ class CreateSubtasks < ActiveRecord::Migration[5.1]
       t.boolean :avaliativa
       t.date :entrega
       t.references :task, foreign_key: true
+      t.references :material, polymorphic: true, index: true
 
       t.timestamps
     end

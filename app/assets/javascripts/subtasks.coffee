@@ -9,4 +9,11 @@ $( document ).on('turbolinks:load', () ->
           $(this).before($(this).data('fields').replace(regexp, time))
           event.preventDefault()
       )
+
+      $('form').on('click', '.add_material_didatico', (event)->
+          time = new Date().getTime()
+          regexp = new RegExp($(this).data('id'), 'g')
+          $(this).before($(this).data('fields').replace(regexp, time))
+          event.preventDefault()
+      )
 )
