@@ -1,58 +1,58 @@
-<body>
   <div id="wrapper">
     <%= render partial: "professores/partial_index" %>
       <div id="page-wrapper">
         <div class="container">
           <div class="col-md-10">
             <div class="panel panel-default ">
-            <%= form_with(model: task, local: true) do |form| %> 
-              <div class="panel panel-default devise-bs ">
-                     <% if task.errors.any? %>
-                  <div id="error_explanation">
-                    <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-              
-                    <ul>
+              <%= form_with(model: task, local: true) do |form| %>
+                <div class="panel panel-default devise-bs ">
+                       <% if task.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+                      <ul>
                       <% task.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
-                    <% end %>
-                    </ul>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+                <div class="panel-heading">
+                  <h4>Criar task</h4>
+                </div>
+
+                  <div class="form-group">
+                    <%= form.label :status %>
+                    <%= form.check_box :status, id: :task_status %>
+                  </div>
+
+                  <div class="form-group">
+                      <%= form.label :abertura %>
+                      <%= form.date_select(:abertura,:start_year => 1950) %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= form.label :nome %>
+                    <%= form.text_field :nome, id: :task_nome, autofocus: true , class: 'form-control' %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= form.label :descricao %>
+                    <%= form.text_area :descricao, id: :task_descricao, class: 'form-control' %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= link_to_add_puclets "Adicionar Subtask", form, :subtasks, 'add_subtask'%>
+                  </div>
+
+                  <div class="actions">
+                   <%= form.submit "Criar", class: 'btn btn-primary' %>
+                   <%= link_to 'Voltar', tasks_path %>
                   </div>
                 <% end %>
-                
-                
-              <div class="panel-heading">
-                <h4>Criar task</h4>
-              </div>
-              
-                <div class="form-group">
-                  <%= form.label "Ativo: " %>
-                  <%= form.check_box :status, id: :task_status %>
-                </div>
-              
-                <div class="form-group">
-                  <%= form.label "Nome: " %>
-                  <%= form.text_field :nome, id: :task_nome, autofocus: true , class: 'form-control' %>
-                </div>
-              
-                <div class="form-group">
-                  <%= form.label "Objetivo: " %>
-                  <%= form.text_area :descricao, id: :task_descricao, class: 'form-control' %>
-                </div>
-                
-                <div class="form-group">
-                  <%= form.label "Data Abertura: " %>
-                  <%= form.date_select :abertura, id: :task_abertura, class: 'form-control' %>
-                </div>
-              
-                <div class="actions">
-                 <%= form.submit "Criar", class: 'btn btn-primary' %>
-                  <% end %>
-                 <%= link_to 'Voltar', tasks_path %>
-                </div>
-             </div>
-          </div>
+            </div>
         </div>
-      </div>  
+      </div>
     </div>
-  </div>  
-</body>  
+  </div>
