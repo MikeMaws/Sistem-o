@@ -23,6 +23,16 @@
           </div>
 
           <div class="form-group">
+            <%= f.fields_for :habilidades do |f| %>
+                <%=render 'habilidade_fields', f:f%>
+            <%end%>
+          </div>
+
+          <div class="form-group">
+            <%= link_to_add_puclets "Adicionar Habilidade", f, :habilidades, 'add_habilidade'%>
+          </div>
+
+          <div class="form-group">
             <%= f.fields_for :puclets do |f| %>
                 <%=render 'puclet_fields', f:f%>
             <%end%>

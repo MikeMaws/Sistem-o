@@ -88,13 +88,17 @@ class TasksController < ApplicationController
           :id,
           :titulo,
           :url
-        ]
         ],
+        :habilidades_attributes => [
+          :id,
+          :nome
+        ]
+      ],
       :materialDidatico_attributes =>[
         :id,
         :titulo,
         :url
       ]
-      )
+    )
     end
 end

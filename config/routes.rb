@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :habilidades
   resources :material_didaticos
   resources :tasks do 
       resources :subtasks do
