@@ -2,7 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $( document ).on('turbolinks:load', () ->
-  jQuery ->
       $('form').on('click', '.add_subtask', (event)->
           time = new Date().getTime()
           regexp = new RegExp($(this).data('id'), 'g')
