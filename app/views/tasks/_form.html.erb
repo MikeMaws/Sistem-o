@@ -44,7 +44,19 @@
                   </div>
 
                   <div class="form-group">
+                    <%= form.fields_for :materialDidatico, task.materialDidatico do |f| %>
+                        <%=render 'materialDidatico_fields', f:f%>
+                    <%end%>
+                  </div>
+
+                  <div class="form-group">
                     <%= link_to_add_puclets "Adicionar Material Didatico", form, :materialDidatico, 'add_material_didatico'%>
+                  </div>
+
+                  <div class="form-group">
+                    <%= form.fields_for :subtasks do |f| %>
+                        <%=render 'subtask_fields', f:f%>
+                    <%end%>
                   </div>
 
                   <div class="form-group">

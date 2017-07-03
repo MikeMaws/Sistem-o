@@ -74,20 +74,24 @@ class TasksController < ApplicationController
       :descricao,
       :abertura,
       :subtasks_attributes=> [
+        :id,
         :task_id,:status,
         :nome,
         :descricao,
         :avaliativa,
         :entrega,
         :puclets_attributes => [
+          :id,
           :nome
         ],
         :materialDidatico_attributes =>[
+          :id,
           :titulo,
           :url
         ]
         ],
       :materialDidatico_attributes =>[
+        :id,
         :titulo,
         :url
       ]
