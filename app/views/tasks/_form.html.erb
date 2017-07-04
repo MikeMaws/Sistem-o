@@ -1,75 +1,94 @@
-  <div id="wrapper">
-    <%= render partial: "professores/partial_index" %>
-      <div id="page-wrapper">
-        <div class="container">
-          <div class="col-md-10">
-            <div class="panel panel-default ">
-              <%= form_with(model: task, local: true) do |form| %>
-                <div class="panel panel-default devise-bs ">
-                       <% if task.errors.any? %>
-                    <div id="error_explanation">
-                      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-                      <ul>
-                      <% task.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                      <% end %>
-                      </ul>
-                    </div>
+<div id="wrapper">
+  <%= render partial: "professores/partial_index" %>
+    <div id="page-wrapper"> 
+     <div class="container-fluid">
+      <div class="col-md-12">
+       <div class="panel panel-default">
+        <%= form_with(model: task, local: true) do |form| %>
+          <div class="panel panel-default">
+            <% if task.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+                <ul> <% task.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
                   <% end %>
-
-                <div class="panel-heading">
-                  <h4>Criar task</h4>
-                </div>
-
-                  <div class="form-group">
-                    <%= form.label :status %>
-                    <%= form.check_box :status, id: :task_status %>
-                  </div>
-
-                  <div class="form-group">
-                      <%= form.label :abertura %>
-                      <%= form.date_select(:abertura,:start_year => 1950) %>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.label :nome %>
-                    <%= form.text_field :nome, id: :task_nome, autofocus: true , class: 'form-control' %>
-                  </div>
-
-
-                  <div class="form-group">
-                    <%= form.label :descricao %>
-                    <%= form.text_area :descricao, id: :task_descricao, class: 'form-control' %>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.fields_for :materialDidatico, task.materialDidatico do |f| %>
-                        <%=render 'materialDidatico_fields', f:f%>
-                    <%end%>
-                  </div>
-
-                  <div class="form-group">
-                    <%= link_to_add_puclets "Adicionar Material Didatico", form, :materialDidatico, 'add_material_didatico'%>
-                  </div>
-
-                  <div class="form-group">
-                    <%= form.fields_for :subtasks do |f| %>
+                </ul>
+              </div>
+            <% end %>
+            
+            <div class="panel-body">
+            <h1 class="page-header">
+                Nova Tarefa <small>Computação Paralela</small>
+            </h1>
+            
+            <div class="container">
+              <div class="row">
+                <div class="form-group">
+                 <div class = col-md-1><H5> <strong> Titulo: </strong> </H5></div>
+                 <div class = col-md-6> <%= form.text_field :nome, id: :task_nome, autofocus: true, class:'form-control'%> </div>
+                 <div class = col-md-1><H5> <strong> Ativa: </strong> </H5></div>
+                 <div class = col-md-4> <H5><%= form.check_box :status, id: :task_status %></H5> </div>
+                </div>  
+              </div>  
+            
+              <div class="row">
+                <div class="form-group">
+                  <div class = col-md-1><H5><strong>Objetivo: </strong> </H5></div>
+                  <div class = col-md-6>  <%= form.text_area :descricao, id: :task_descricao, class: 'form-control' %> </div>
+                  <div class = col-md-1><H5> <strong> Abertura: </strong> </H5></div>
+                  <div class = col-md-4> <H5><%= form.date_select(:abertura,:start_year => 2017)%></H5> </div>
+                </div>  
+              </div>
+          
+      
+              <div class="row">
+                <div class="form-group">
+                    <H4 class="page-header">Material didatico</H4>
+                  <%= form.fields_for :materialDidatico, task.materialDidatico do |f| %>
+                      <%=render 'materialDidatico_fields', f:f%>
+                  <%end%>
+               </div>
+              </div>  
+             
+                  
+              <div class="row">
+                <div class="form-group">
+                  <%= link_to_add_puclets "Adicionar Material Didatico", form, :materialDidatico, 'add_material_didatico'%>
+                </div>  
+              </div>
+            
+              
+              <div class="row">
+                <div class="form-group">
+                    <H4 class="page-header">Sub Tarefas</H4>
+                  <%= form.fields_for :subtasks do |f| %>
                         <%=render 'subtask_fields', f:f%>
                     <%end%>
-                  </div>
-
-                  <div class="form-group">
-                    <%= link_to_add_puclets "Adicionar Subtask", form, :subtasks, 'add_subtask'%>
-                  </div>
-
-                  <div class="actions">
-                   <%= form.submit "Criar", class: 'btn btn-primary' %>
-                   <%= link_to 'Voltar', tasks_path %>
-                  </div>
-                <% end %>
+               </div>
+              </div> 
+              
+              <div class="row">
+                <div class="form-group">
+                  <%= link_to_add_puclets "Adicionar Subtask", form, :subtasks, 'add_subtask'%>
+                </div>  
+              </div>
+              
+              
+              <div class="row">
+                <H4 class="page-header"></H4>
+                <div class="actions">
+                 <%= form.submit "Criar", class: 'btn btn-primary' %>
+                 <%= link_to 'Voltar', tasks_path %>
+                </div>
+              </div>    
+              </div>
             </div>
+          </div>
         </div>
+        <% end %>
       </div>
-    </div>
+    </div> 
   </div>
+</div> 
+
+

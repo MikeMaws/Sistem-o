@@ -1,54 +1,76 @@
-
-      <div class="panel-heading">
-        <h4>SubTarefa</h4>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="form-group">
+          <div class = col-md-1><H4><strong>Titulo: </strong> </H4></div>
+          <div class = col-md-6>  <%= f.text_field :nome, class: 'form-control' %> </div>
+          <div class = col-md-1><H4><strong>Avaliativa: </strong> </H4></div>
+          <div class = col-md-2><H5> <%= f.check_box :avaliativa %></H5> </div>
+        </div>  
       </div>
-      <div class="panel-body">
-          <div class="form-group">
-             <%= f.label :nome %>
-             <%= f.text_field :nome, autofocus: true, placeholder: "Nome da tarefa",class: 'form-control' %>
-          </div>
-          <div class="form-group">
-             <%= f.label :descricao %>
-             <%= f.text_area :descricao,placeholder: "Digite a descricão da tarefa",class: 'form-control' %>
-          </div>
-          <div class="form-group">
-              <%= f.label :avaliativa %>
-              <%= f.check_box :avaliativa %>
-          </div>
-
-          <p/>
-          <div class="form-group">
-              <%= f.label :entrega %>
-              <%= f.date_select(:entrega,:start_year => 1950) %>
-          </div>
-
-          <div class="form-group">
-            <%= f.fields_for :habilidades do |f| %>
-                <%=render 'habilidade_fields', f:f%>
-            <%end%>
-          </div>
-
-          <div class="form-group">
-            <%= link_to_add_puclets "Adicionar Habilidade", f, :habilidades, 'add_habilidade'%>
-          </div>
-
-          <div class="form-group">
-            <%= f.fields_for :puclets do |f| %>
-                <%=render 'puclet_fields', f:f%>
-            <%end%>
-          </div>
-
-          <div class="form-group">
-            <%= link_to_add_puclets "Adicionar Puclet", f, :puclets, 'add_puclets'%>
-          </div>
-
-          <div class="form-group">
-            <%= f.fields_for :materialDidatico do |f| %>
-                <%=render 'materialDidatico_fields', f:f%>
-            <%end%>
-          </div>
-
-          <div class="form-group">
-            <%= link_to_add_puclets "Adicionar Material Didatico", f, :materialDidatico, 'add_material_didatico'%>
-          </div>
+      
+       <div class="row">
+        <div class="form-group">
+          <div class = col-md-1><H4><strong>Objetivo: </strong> </H4></div>
+          <div class = col-md-6>  <%= f.text_area :descricao, class: 'form-control' %> </div>
+          <div class = col-md-1><H4> <strong> Entrega: </strong> </H4></div>
+          <div class = col-md-4> <H5><%= f.date_select(:entrega,:start_year => 2017)%></H5> </div>
+        </div>  
       </div>
+      
+      
+      <div class="row">
+        <div class="form-group">
+          <h3 class="page-header">Habilidades</h3>
+          <%= f.fields_for :habilidades do |f| %>
+            <%=render 'habilidade_fields', f:f%>
+          <%end%>
+       </div>
+      </div> 
+      
+      <div class="row">
+        <div class="form-group">
+          <%= link_to_add_puclets "Adicionar Habilidade", f, :habilidades, 'add_habilidade'%>
+        </div>  
+      </div>
+      
+      
+      <div class="row">
+        <div class="form-group">
+          <h3 class="page-header">Puclets</h3>
+          <%= f.fields_for :puclets do |f| %>
+            <%=render 'puclet_fields', f:f%>
+          <%end%>
+       </div>
+      </div> 
+      
+      <div class="row">
+        <div class="form-group">
+          <%= link_to_add_puclets "Adicionar Puclet", f, :puclets, 'add_puclets'%>
+        </div>  
+      </div>
+      
+      
+      <div class="row">
+        <div class="form-group">
+          <h3 class="page-header">Material Didatico</h3>
+          <%= f.fields_for :materialDidatico do |f| %>
+            <%=render 'materialDidatico_fields', f:f%>
+          <%end%>
+       </div>
+      </div> 
+      
+      <div class="row">
+        <div class="form-group">
+          <%= link_to_add_puclets "Adicionar Material Didatico", f, :materialDidatico, 'add_material_didatico'%>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

@@ -92,14 +92,22 @@
                         <% end %>
                       </div>
                     </div>
-
+                    
+                     <H4><strong> Respostas: </strong></H4>
+                     <% @resps.each do |f|%>
+                      <div class="row">
+                      <div class="col-md-12">
+                        <%= f.link %>
+                        <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </div>
+                    </div>
+                     <%end%>
                    <!-- aqui tem que incluir o link para newAnswers exibindo o campo link -->
                     <%= form_for @resp do |f|%>
                       <%= f.label :link%>
                       <%= f.text_field :link%>
                       <%= f.hidden_field :subtask_id, value: subtask.id%>
                       <%= f.hidden_field :user_id, value: current_user.id%>
-
                       <%= f.submit%>
                     <%end%>
                   </div>

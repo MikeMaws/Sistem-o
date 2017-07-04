@@ -1,52 +1,49 @@
 <body>
-
 <% if policy(@tasks).index? %>
-  <div id="wrapper">
-    <%= render partial: "professores/partial_index" %>
-      <div id="page-wrapper">
-      
-        <div class="container">
-          <div class="col-md-12">
-            <div class="panel-heading">
-                <h1>Tasks</h1>
-              </div>
-                <div class="panel-body"  >
-                  <table >
-                    <thead>
-                      <tr class="form-group" >
-                        <th>Id</th>
-                        <th>Status</th>
-                        <th>Nome</th>
-        
-                      </tr>
-                    </thead>
-                    
-                    <tbody>
-                      <% @tasks.each do |task| %>
-                        <tr>
-                          <td><%= task.id %></td>
-                          <td><%= task.status %></td>
-                          <td><%= task.nome %></td>
-                          <td><%= link_to 'Show', task %></td>
-                          <td><%= link_to 'Edit', edit_task_path(task) %></td>
-                          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                        </tr>
-                      <% end %>
-                    </tbody>
-                  </table>
-        
-                <br>
-                
-                <%= link_to 'New Task', new_task_path %>
-        
-              </div>
-            </div>
+ <div id="wrapper">
+  <%= render partial: "professores/partial_index" %>
+    <div id="page-wrapper"> 
+     <div class="container-fluid">
+      <div class="col-md-12">
+       <div class="panel panel-default">
+         
+         
+         <div class="panel-body">
+          <h1 class="page-header">
+              Lista de Tarefas <small>Computação Paralela</small>
+          </h1>
+          <div class="row">
+            <div class = col-md-1><h3>ID</h3></div>
+            <div class = col-md-2><h3>Status</h3></div>
+            <div class = col-md-4><h3>Nome</h3></div>
+            <div class = col-md-1><h3>Data</h3></div>
           </div>
+          
+          <% @tasks.each do |task| %>
+          <div class="row">
+            <div class = col-md-1><h3><%= task.id %></h3></div>
+            <div class = col-md-2><h3><%= task.status %></h3></div>
+            <div class = col-md-4><h3><%= task.nome %></h3></div>
+            <div class = col-md-2><h3><%= task.abertura %></h3></div>
+            <div class = col-md-3><h3><%= link_to 'Exibir', task %>  <%= link_to 'Editar', edit_task_path(task) %>  <%= link_to 'Excluir', task, method: :delete, data: { confirm: 'você tem certeza?' } %> </h3></div>
+          </div>
+          <%end%>
+         
+          <div class="row">
+            <div class = col-md-12><h2><%= link_to 'Criar Tarefa', new_task_path %></h2></div>
+          </div>   
         </div>
+       </div>
       </div>
-    </div>
-  <% end %>    
+     </div>
+     <!-- /.container-fluid -->
+   </div>
+  <!-- /#page-wrapper -->
+  </div>
+<!-- /#wrapper -->
+<% end %>
 </body>
+
 
 
 

@@ -1,4 +1,5 @@
 class AlunosController < ApplicationController
+  before_action :authenticate_user!
   def linha_do_tempo
     @tasks = Task.all
   end
@@ -15,6 +16,7 @@ class AlunosController < ApplicationController
   def resolver_task
       
       @current_task = Task.where(id: params[:task_id])  #alterar para o id da task selecionada
+      @resps = Answer.all
       @resp = Answer.new
   end
 end

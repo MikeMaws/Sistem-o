@@ -4,6 +4,10 @@ class UserPolicy < ApplicationPolicy
     user.admin?
   end
   
+  def linha_do_tempo?
+    user.professor?
+  end
+  
   class Scope < Scope
     def resolve
       scope
