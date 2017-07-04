@@ -1,0 +1,52 @@
+<%= form_with(model: answer, local: true) do |form| %>
+  <% if answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+      <% answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Identificador" %>
+    <%= form.label current_user.id %>
+    <%= form.hidden_field :user_id, :value => current_user.id, id: :answer_user_id %>
+  </div>
+  
+    <div class="field">
+    <%= current_user.email %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :subtask_id %>
+    <%= form.number_field :subtask_id, id: :answer_subtask_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link, id: :answer_link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :like %>
+    <%= form.number_field :like, id: :answer_like %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dislike %>
+    <%= form.number_field :dislike, id: :answer_dislike %>
+  </div>
+
+  <div class="field">
+    <%= form.label :report %>
+    <%= form.number_field :report, id: :answer_report %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

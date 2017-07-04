@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :answers
   resources :habilidades
   resources :material_didaticos
   resources :tasks do 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   get 'alunos/grafico_habilidade'
   get 'alunos/grafico_progresso'
   get 'alunos/profile'
+  get 'alunos/resolver_task'
   get 'professores/linha_do_tempo'
   get 'administradores/index'
   devise_for :users

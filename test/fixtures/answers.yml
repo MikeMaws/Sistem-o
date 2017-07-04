@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subtask_id: 1
+  link: MyString
+  like: 1
+  dislike: 1
+  report: 1
+  user: one
+
+two:
+  subtask_id: 1
+  link: MyString
+  like: 1
+  dislike: 1
+  report: 1
+  user: two
