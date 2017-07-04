@@ -1,7 +1,7 @@
 <body>
  <div id="wrapper">
   <%= render partial: "partial_index" %>
-    <div id="page-wrapper"> 
+    <div id="page-wrapper">
      <div class="container-fluid">
       <div class="col-md-12">
        <div class="panel panel-default">
@@ -20,10 +20,10 @@
          </h1>
           <div class="list-group">
            <% @tasks.each do |task| %>
-            <a href="resolver_task" class="list-group-item">
+           <%= link_to "resolver_task?task_id=#{task.id}", class: "list-group-item" do %>
              <span class="badge pull-right"><%= task.created_at %> </span>
               <i class="fa fa-tasks fa-2x"> <%= task.nome %></i>
-            </a>
+              <%end%>
            <% end %>
           </div>
         </div>

@@ -3,9 +3,9 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
     create_table :answers do |t|
       t.integer :subtask_id
       t.string :link
-      t.integer :like
-      t.integer :dislike
-      t.integer :report
+      t.integer :like, default: 0
+      t.integer :dislike, default: 0
+      t.integer :report, default: 0
       t.references :user, foreign_key: true
 
       t.timestamps

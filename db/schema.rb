@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20170703201454) do
   create_table "answers", force: :cascade do |t|
     t.integer "subtask_id"
     t.string "link"
-    t.integer "like"
-    t.integer "dislike"
-    t.integer "report"
+    t.integer "like", default: 0
+    t.integer "dislike", default: 0
+    t.integer "report", default: 0
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20170703201454) do
     t.string "material_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "materialdidaticos", force: :cascade do |t|
+    t.string "descricao"
+    t.string "link"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_materialdidaticos_on_task_id"
   end
 
   create_table "nivels", force: :cascade do |t|

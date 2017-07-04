@@ -5,11 +5,11 @@
       <div class="container">
           <div class="col-md-10">
             <div class="panel panel-primary">
-             
+
               <div class="panel-heading">
                 <H2 align = "center"> <strong>Tarefa Número:</strong> <%= task.id %> </H2>
               </div>
-              
+
               <div class="panel-body">
                 <div class="panel panel-primary">
                   <div class="panel-body">
@@ -18,13 +18,13 @@
                         <H4><strong> Nome: </strong> <%= task.nome %> </H4>
                       </div>
                     </div>
-                    
+
                     <div class="row">
                       <div class="col-md-12">
                         <H4><strong> Objetivo: </strong>  <%= task.descricao %> </H4>
                       </div>
                     </div>
-                    
+
                     <div class="row">
                       <div class="col-md-9">
                         <H4><strong> Abertura: </strong> <%= task.abertura %> </H4>
@@ -33,15 +33,15 @@
                         <H4><strong> Ativa: </strong> <%=  task.status %> </H4>
                       </div>
                     </div>
-                  </div> 
-                </div>  
-                
+                  </div>
+                </div>
+
                 <div class="panel panel-primary">
                   <div class="panel-heading">
                     <H3 align = "center"> <strong>Materiais Didaticos</strong> </H3>
                   </div>
                   <div class="panel-body">
-                    <% task.materialDidatico.each do |material| %> 
+                    <% task.materialDidatico.each do |material| %>
                      <div class="panel panel-primary">
                       <div class="panel-body">
                         <div class="row">
@@ -50,13 +50,13 @@
                              <H4><strong> Link:  </strong> <%= material.url %> </H4>
                           </div>
                         </div>
-                      </div>  
-                    </div>    
+                      </div>
+                    </div>
                     <%end%>
                   </div>
                 </div>
-             
-                <% task.subtasks.each do |subtask| %>   
+
+                <% task.subtasks.each do |subtask| %>
                 <div i class="panel panel-primary">
                   <div class="panel-heading">
                     <H3 align = "center"><strong> Sub Tarefa : </strong>   <%= subtask.nome%> </H3>
@@ -67,41 +67,48 @@
                           <H4><strong> Descrição: </strong>   <%= subtask.descricao%> </H4>
                       </div>
                     </div>
-                    
+
                     <div class="row">
                       <div class="col-md-12">
                         <H4><strong> Data Entrega: </strong>   <%= subtask.entrega%> </H4>
                       </div>
                     </div>
-                    
-                    
+
+
                     <div class="row">
                       <div class="col-md-12">
                         <H4><strong> Puclet: </strong> </H4>
-                        <% subtask.puclets.each do |puclet| %>   
+                        <% subtask.puclets.each do |puclet| %>
                           <%= puclet.nome%>
                         <% end %>
                       </div>
                     </div>
-                     
+
                     <div class="row">
                       <div class="col-md-12">
                         <H4><strong> Habilidades: </strong></H4>
-                        <% subtask.habilidades.each do |habilidade| %>   
-                          <%= habilidade.nome%>  
-                        <% end %>  
+                        <% subtask.habilidades.each do |habilidade| %>
+                          <%= habilidade.nome%>
+                        <% end %>
                       </div>
                     </div>
-                    
-                   <!-- aqui tem que incluir o link para newAnswers exibindo o campo link -->  
-                    
-                  </div> 
+
+                   <!-- aqui tem que incluir o link para newAnswers exibindo o campo link -->
+                    <%= form_for @resp do |f|%>
+                      <%= f.label :link%>
+                      <%= f.text_field :link%>
+                      <%= f.hidden_field :subtask_id, value: subtask.id%>
+                      <%= f.hidden_field :user_id, value: current_user.id%>
+
+                      <%= f.submit%>
+                    <%end%>
+                  </div>
                 </div>
                 <% end %>
               </div>
             </div>
           </div>
         </div>
-      <% end %>  
+      <% end %>
   </div>
 </body>
