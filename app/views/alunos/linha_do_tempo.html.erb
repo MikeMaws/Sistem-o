@@ -1,10 +1,20 @@
 <body>
  <div id="wrapper">
   <%= render partial: "partial_index" %>
-     <div class="container">
+    <div id="page-wrapper"> 
+     <div class="container-fluid">
       <div class="col-md-12">
        <div class="panel panel-default">
-        <div class="panel-body">
+         <div class="panel-body">
+          <div class="row">
+          <div class="col-md-12">
+           <ol class="breadcrumb">
+            <li class="active">
+             <i class="fa fa-trophy fa-2x"></i><strong> Posição Atual Media : Novato</strong>
+            </li>
+           </ol>
+          </div>
+         </div>
          <h1 class="page-header">
           Linha do tempo <small>Computação Paralela</small>
          </h1>
@@ -22,6 +32,7 @@
      </div>
      <!-- /.container-fluid -->
     </div>
+   </div>
   <!-- /#page-wrapper -->
   </div>
 <!-- /#wrapper -->

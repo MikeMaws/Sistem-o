@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   get 'alunos/profile'
   get 'alunos/resolver_task'
   get 'professores/linha_do_tempo'
+  get 'professores/profile'
   get 'administradores/index'
+  
   devise_for :users
   devise_scope :user do
       root :to => 'devise/sessions#new'

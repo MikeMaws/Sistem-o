@@ -1,4 +1,4 @@
 class ProfessoresController < ApplicationController
-  def index
+  def profile
   end
 end
