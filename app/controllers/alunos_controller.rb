@@ -1,7 +1,7 @@
 class AlunosController < ApplicationController
   before_action :authenticate_user!
   def linha_do_tempo
-    @tasks = Task.all
+    @tasks = Task.where("DATE(?) BETWEEN abertura AND fechamento", Time.now)
   end
   def missao
   end
@@ -14,7 +14,7 @@ class AlunosController < ApplicationController
   def profile
   end
   def resolver_task
-      
+
       @current_task = Task.where(id: params[:task_id])  #alterar para o id da task selecionada
       @resps = Answer.all
       @resp = Answer.new

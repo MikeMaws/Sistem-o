@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705134053) do
+ActiveRecord::Schema.define(version: 20170705132138) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "subtask_id"
@@ -74,12 +74,12 @@ ActiveRecord::Schema.define(version: 20170705134053) do
     t.boolean "status"
     t.string "nome"
     t.text "descricao"
-    t.datetime "abertura"
+    t.date "abertura"
+    t.date "fechamento"
     t.string "material_type"
     t.integer "material_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "entrega"
     t.index ["material_type", "material_id"], name: "index_tasks_on_material_type_and_material_id"
   end
 

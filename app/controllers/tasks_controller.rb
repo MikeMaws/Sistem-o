@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     respond_to do |format|
-      if @task.save
+      if @task.save && update_fechamento
         format.html { redirect_to tasks_url, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
     respond_to do |format|
-      if @task.update(task_params)
+      if @task.update(task_params) && update_fechamento
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
@@ -63,6 +63,12 @@ class TasksController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def update_fechamento
+      fechamento = @task.subtasks.order("entrega DESC").first.entrega
+      @task.update({fechamento: fechamento})
+    end
+
     def set_task
       @task = Task.find(params[:id])
     end
