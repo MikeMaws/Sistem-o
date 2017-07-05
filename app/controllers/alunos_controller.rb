@@ -1,7 +1,9 @@
 class AlunosController < ApplicationController
   before_action :authenticate_user!
   def linha_do_tempo
-    @tasks = Task.where("DATE(?) BETWEEN abertura AND fechamento", Time.now)
+    @tasks    = Task.where("DATE(?) BETWEEN abertura AND fechamento", Time.now)
+    @answers  = Answer.all
+  #  @answers  = Answer.where(['subtask_id = ?',1])
   end
   def missao
   end

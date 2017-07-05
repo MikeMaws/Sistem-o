@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705132138) do
+ActiveRecord::Schema.define(version: 20170703201454) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "subtask_id"

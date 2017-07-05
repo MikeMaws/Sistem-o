@@ -65,7 +65,11 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def update_fechamento
-      fechamento = @task.subtasks.order("entrega DESC").first.entrega
+      if @task.subtasks.present?
+        fechamento = @task.subtasks.order("entrega DESC").first.entrega
+      else
+        fechamento = @task.abertura.months_since(6)
+      end
       @task.update({fechamento: fechamento})
     end
 

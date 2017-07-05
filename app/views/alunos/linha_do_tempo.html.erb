@@ -20,12 +20,44 @@
          </h1>
           <div class="list-group">
            <% @tasks.each do |task| %>
-           <%= link_to "resolver_task?task_id=#{task.id}", class: "list-group-item" do %>
-             <span class="badge pull-right"><%= task.created_at %> </span>
-              <i class="fa fa-tasks fa-2x"> <%= task.nome %></i>
-              <%end%>
+            <%= link_to "resolver_task?task_id=#{task.id}", class: "list-group-item" do %>
+             <span class="badge pull-right"><%= task.abertura %> </span>
+              <i class="glyphicon glyphicon-tasks"> <%= task.nome %></i>
+             <%end%>
            <% end %>
+            
+             
           </div>
+          
+           <div class="list-group">
+           <% @answers.each do |answers| %>    
+             <%= link_to answers.link , target: :_blank , class: "list-group-item" do %>
+                 <div class="row">
+                  
+                   <div class="col-md-7">
+                      <!-- listar nome task subtask-->
+                      <h5 class="glyphicon glyphicon-thumbs-up "><strong> Nome task </strong> <small> nome subtask </small> </h5>
+                     
+                  </div>  
+                    <div class="col-md-2">
+                     
+                      <span class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span> </span>
+                      <span class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </span>
+                      <span class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.like %> </span> </span>
+                     
+                     
+                  </div> 
+                    <div class="col-md-3">
+                       <!-- ao clicar no botão permanecer na pag e computar o like/dislike/report-->
+                       <span class ='btn btn-primary pull-right'> report </span>
+                       <span class ='btn btn-danger pull-right'> Dislike </span>
+                       <span class ='btn btn-success pull-right'> Like </span>
+                  </div>
+                 </div>   
+             <%end%> 
+            <%end%> 
+           </div>  
+           
         </div>
        </div>
       </div>
