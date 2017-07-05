@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703201454) do
+ActiveRecord::Schema.define(version: 20170705134053) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "subtask_id"
@@ -38,15 +38,6 @@ ActiveRecord::Schema.define(version: 20170703201454) do
     t.string "material_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "materialdidaticos", force: :cascade do |t|
-    t.string "descricao"
-    t.string "link"
-    t.integer "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_materialdidaticos_on_task_id"
   end
 
   create_table "nivels", force: :cascade do |t|
@@ -83,11 +74,12 @@ ActiveRecord::Schema.define(version: 20170703201454) do
     t.boolean "status"
     t.string "nome"
     t.text "descricao"
-    t.date "abertura"
+    t.datetime "abertura"
     t.string "material_type"
     t.integer "material_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "entrega"
     t.index ["material_type", "material_id"], name: "index_tasks_on_material_type_and_material_id"
   end
 
