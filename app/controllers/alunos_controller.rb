@@ -2,8 +2,7 @@ class AlunosController < ApplicationController
   before_action :authenticate_user!
   def linha_do_tempo
     @tasks    = Task.where("DATE(?) BETWEEN abertura AND fechamento", Time.now)
-    @answers  = Answer.all
-  #  @answers  = Answer.where(['subtask_id = ?',1])
+    @answers  = Answer.where(subtask_id: Subtask.where(task_id: Task.where("DATE(?) <= date(fechamento, '+7 day')", Time.now)))
   end
   def missao
   end
@@ -18,7 +17,7 @@ class AlunosController < ApplicationController
   def resolver_task
 
       @current_task = Task.where(id: params[:task_id])  #alterar para o id da task selecionada
-      @resps = Answer.all
+      @resps = Answer.where(user_id: current_user.id)
       @resp = Answer.new
   end
 end

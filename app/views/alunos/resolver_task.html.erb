@@ -92,15 +92,17 @@
                         <% end %>
                       </div>
                     </div>
-                    
+
                      <H4><strong> Respostas: </strong></H4>
                      <% @resps.each do |f|%>
-                      <div class="row">
-                      <div class="col-md-12">
-                        <%= f.link %>
-                        <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %>
-                    </div>
-                    </div>
+                        <%if f.subtask_id == subtask.id%>
+                          <div class="row">
+                          <div class="col-md-12">
+                              <%= f.link %>
+                              <%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %>
+                          </div>
+                          </div>
+                        <%end%>
                      <%end%>
                    <!-- aqui tem que incluir o link para newAnswers exibindo o campo link -->
                     <%= form_for @resp do |f|%>

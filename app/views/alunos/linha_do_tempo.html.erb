@@ -25,39 +25,40 @@
               <i class="glyphicon glyphicon-tasks"> <%= task.nome %></i>
              <%end%>
            <% end %>
-            
-             
+
+
           </div>
-          
+
            <div class="list-group">
-           <% @answers.each do |answers| %>    
-             <%= link_to answers.link , target: :_blank , class: "list-group-item" do %>
-                 <div class="row">
-                  
+           <% @answers.each do |answers| %>
+                 <div class="row list-group-item">
+                  <%= link_to answers.link , target: :_blank do %>
+
                    <div class="col-md-7">
                       <!-- listar nome task subtask-->
-                      <h5 class="glyphicon glyphicon-thumbs-up "><strong> Nome task </strong> <small> nome subtask </small> </h5>
-                     
-                  </div>  
+                      <h5 class="glyphicon glyphicon-thumbs-up "><strong> <%= answers.subtask.task.nome%> </strong> <small> <%=answers.subtask.nome%> </small> </h5>
+
+                  </div>
+                  <%end%>
+
                     <div class="col-md-2">
-                     
                       <span class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span> </span>
                       <span class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </span>
-                      <span class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.like %> </span> </span>
-                     
-                     
-                  </div> 
+                      <span class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </span>
+                    </div>
                     <div class="col-md-3">
                        <!-- ao clicar no botão permanecer na pag e computar o like/dislike/report-->
-                       <span class ='btn btn-primary pull-right'> report </span>
-                       <span class ='btn btn-danger pull-right'> Dislike </span>
-                       <span class ='btn btn-success pull-right'> Like </span>
-                  </div>
-                 </div>   
-             <%end%> 
-            <%end%> 
-           </div>  
-           
+                       <%= link_to "Report", report_answer_url(id: answers.id), method: :post, class: "btn btn-primary pull-right"%>
+                       <%= link_to "Disike", dislike_answer_url(id: answers.id), method: :post, class: "btn btn-danger pull-right"%>
+                       <%= link_to "Like", like_answer_url(id: answers.id), method: :post, class: "btn btn-success pull-right"%>
+
+
+                    </div>
+                 </div>
+
+            <%end%>
+           </div>
+
         </div>
        </div>
       </div>

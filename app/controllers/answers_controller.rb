@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_answer, only: [:show, :edit, :update, :destroy, :like, :dislike, :report]
 
   # GET /answers
   # GET /answers.json
@@ -59,6 +59,21 @@ class AnswersController < ApplicationController
       format.html { redirect_to answers_url, notice: 'Answer was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def like
+    @answer.update(like: @answer.like+1)
+    redirect_to request.referer
+  end
+
+  def dislike
+    @answer.update(dislike: @answer.dislike+1)
+    redirect_to request.referer
+  end
+
+  def report
+    @answer.update(report: @answer.report+1)
+    redirect_to request.referer
   end
 
   private
