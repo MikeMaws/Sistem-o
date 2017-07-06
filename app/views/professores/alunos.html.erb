@@ -1,0 +1,46 @@
+<body>
+<% if policy(@users).alunos? %>
+ <div id="wrapper">
+  <%= render partial: "professores/partial_index" %>
+    <div id="page-wrapper"> 
+     <div class="container-fluid">
+      <div class="col-md-12">
+       <div class="panel panel-default">
+         <div class="panel-body">
+          <h1 class="page-header">
+              Lista de alunos cadastrados <small>Computação Paralela</small>
+          </h1>
+          <div class="row">
+            <div class = col-md-4><h3>Email</h3></div>
+          </div>
+          
+          <% @users.each do |user| %>
+          <div class="row">
+            <div class = col-md-4><h3><%= user.email %></h3></div>
+            <div class="col-md-3">
+             <!-- ao clicar no botão permanecer na pag e computar o like/dislike/report-->
+             <%= link_to "Habilidades", "aluno_resumo?user_id=#{user.id}", class: "btn btn-primary pull-right",target: :_blank%>
+            </div>
+          </div>
+          <%end%>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- /.container-fluid -->
+   </div>
+  <!-- /#page-wrapper -->
+  </div>
+<!-- /#wrapper -->
+<% end %>
+</body>
+
+
+
+
+
+
+
+
+
+

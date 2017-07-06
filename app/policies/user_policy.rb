@@ -8,6 +8,10 @@ class UserPolicy < ApplicationPolicy
     user.professor?
   end
   
+  def alunos?
+    user.professor?
+  end
+  
   class Scope < Scope
     def resolve
       scope

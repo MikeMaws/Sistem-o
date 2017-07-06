@@ -17,8 +17,7 @@ class AlunosController < ApplicationController
   def profile
   end
   def resolver_task
-
-      @current_task = Task.where(id: params[:task_id])  #alterar para o id da task selecionada
+      @current_task = Task.where(id: params[:task_id]) 
       @resps = Answer.where(user_id: current_user.id)
       @resp = Answer.new
   end

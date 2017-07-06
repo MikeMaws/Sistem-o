@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get 'alunos/resolver_task'
   get 'professores/linha_do_tempo'
   get 'professores/profile'
+  get 'professores/alunos'
+  get 'professores/aluno_resumo'
   get 'administradores/index'
 
   devise_for :users

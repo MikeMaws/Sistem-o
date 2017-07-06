@@ -1,0 +1,80 @@
+<body>
+ <div id="wrapper">
+  <%= render partial: "professores/partial_index" %>
+    <div id="page-wrapper">
+     <div class="container-fluid">
+      <div class="col-md-12">
+       <div class="panel panel-default">
+         <div class="panel-body">
+          <div class="row">
+          <div class="col-md-12">
+           
+           <h1 class="page-header">
+             <% @users.each do |user| %>      
+               <strong><%= user.email %> </strong>
+               <%end%>
+            </h1>
+            
+            <% @avals.each do |aval| %>  
+             <strong>Nota parcial: </strong> <small> <%= aval.nota %> / 100.0</small>
+             
+             <ol class="breadcrumb">
+               <li>
+                <% total = aval.colaboracao +  aval.construcao + aval.pcritico + aval.compromisso + aval.criatividade +  aval.comunicacao %>
+                 <canvas id="myChart" width="400" height="400"></canvas>
+                    <script >
+                    var ctx = document.getElementById("myChart").getContext('2d');
+                    var myChart = new Chart(ctx, 
+                    {
+                     type: 'radar',
+                      data: 
+                      {
+                       labels: ["Colaboração", "Construção", "Pensamento Critico", "Compromisso", "Criatividade", "Comunicação"],
+                       datasets: 
+                       [
+                        {
+                         label: 'Minhas Habilidades',
+                         data: [<%= aval.colaboracao/total * 100 %>, <%= aval.construcao/total * 100 %>, <%= aval.pcritico/total * 100 %>, <%= aval.compromisso/total * 100 %>, <%= aval.criatividade/total * 100 %>, <%= aval.comunicacao/total * 100 %>],
+                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                         borderColor: 'rgba(255,99,132,1)',
+                         borderWidth: 2
+                        }
+                       ]
+                      }
+                    });
+                  </script>
+               <%end%>
+              </li>
+           </ol>
+           
+           
+                 <div class="list-group">
+                  <% @answers.each do |answers| %>
+                 <div class="row list-group-item">
+                  <%= link_to answers.link , target: :_blank do %>
+
+                   <div class="col-md-7">
+                      <!-- listar nome task subtask-->
+                      <h5 class="glyphicon glyphicon-thumbs-up "><strong> <%= answers.subtask.task.nome%> </strong> <small> <%=answers.subtask.nome%> </small> </h5>
+
+                  </div>
+                  <%end%>
+
+                    <div class="col-md-2">
+                      <span class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span> </span>
+                      <span class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </span>
+                      <span class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </span>
+                    </div>
+                 </div>
+
+            <%end%>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+</body>
