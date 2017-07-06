@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703201454) do
+ActiveRecord::Schema.define(version: 20170706132312) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "subtask_id"
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 20170703201454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "avaliars", force: :cascade do |t|
+    t.float "nota"
+    t.float "comunicacao"
+    t.float "colaboracao"
+    t.float "construcao"
+    t.float "pcritico"
+    t.float "compromisso"
+    t.float "criatividade"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_avaliars_on_user_id"
   end
 
   create_table "habilidades", force: :cascade do |t|

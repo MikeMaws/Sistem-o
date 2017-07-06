@@ -1,0 +1,57 @@
+<%= form_with(model: avaliar, local: true) do |form| %>
+  <% if avaliar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(avaliar.errors.count, "error") %> prohibited this avaliar from being saved:</h2>
+
+      <ul>
+      <% avaliar.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nota %>
+    <%= form.text_field :nota, id: :avaliar_nota %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comunicacao %>
+    <%= form.text_field :comunicacao, id: :avaliar_comunicacao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :colaboracao %>
+    <%= form.text_field :colaboracao, id: :avaliar_colaboracao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :construcao %>
+    <%= form.text_field :construcao, id: :avaliar_construcao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pcritico %>
+    <%= form.text_field :pcritico, id: :avaliar_pcritico %>
+  </div>
+
+  <div class="field">
+    <%= form.label :compromisso %>
+    <%= form.text_field :compromisso, id: :avaliar_compromisso %>
+  </div>
+
+  <div class="field">
+    <%= form.label :criatividade %>
+    <%= form.text_field :criatividade, id: :avaliar_criatividade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :avaliar_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

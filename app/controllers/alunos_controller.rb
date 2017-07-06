@@ -3,6 +3,7 @@ class AlunosController < ApplicationController
   def linha_do_tempo
     @tasks    = Task.where("DATE(?) BETWEEN abertura AND fechamento", Time.now)
     @answers  = Answer.where(subtask_id: Subtask.where(task_id: Task.where("DATE(?) <= date(fechamento, '+7 day')", Time.now)))
+    @avals    = Avaliar.where(user_id: current_user.id)
   end
   def missao
   end
@@ -11,6 +12,7 @@ class AlunosController < ApplicationController
   def grafico_progresso
   end
   def grafico_habilidade
+    @avals    = Avaliar.where(user_id: current_user.id)
   end
   def profile
   end

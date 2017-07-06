@@ -12,6 +12,11 @@
             <li class="active">
              <i class="fa fa-trophy fa-2x"></i><strong> Posição Atual Media : Novato</strong>
             </li>
+             <li class="active">
+              <% @avals.each do |aval| %>
+             <strong>Nota Parcial: <%= aval.nota %> / 100.0</strong>
+             <%end%>
+            </li>
            </ol>
           </div>
          </div>
@@ -25,8 +30,6 @@
               <i class="glyphicon glyphicon-tasks"> <%= task.nome %></i>
              <%end%>
            <% end %>
-
-
           </div>
 
            <div class="list-group">

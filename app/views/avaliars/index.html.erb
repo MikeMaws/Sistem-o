@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Avaliars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nota</th>
+      <th>Comunicacao</th>
+      <th>Colaboracao</th>
+      <th>Construcao</th>
+      <th>Pcritico</th>
+      <th>Compromisso</th>
+      <th>Criatividade</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @avaliars.each do |avaliar| %>
+      <tr>
+        <td><%= avaliar.nota %></td>
+        <td><%= avaliar.comunicacao %></td>
+        <td><%= avaliar.colaboracao %></td>
+        <td><%= avaliar.construcao %></td>
+        <td><%= avaliar.pcritico %></td>
+        <td><%= avaliar.compromisso %></td>
+        <td><%= avaliar.criatividade %></td>
+        <td><%= avaliar.user %></td>
+        <td><%= link_to 'Show', avaliar %></td>
+        <td><%= link_to 'Edit', edit_avaliar_path(avaliar) %></td>
+        <td><%= link_to 'Destroy', avaliar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Avaliar', new_avaliar_path %>

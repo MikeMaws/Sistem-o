@@ -11,6 +11,8 @@ gem 'devise'
 gem 'pundit'
 # bootStrap
 gem 'bootstrap-sass', '~> 3.3.6'
+#grafico
+gem 'chart-js-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'

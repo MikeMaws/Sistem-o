@@ -1,23 +1,51 @@
 <body>
-
-    <div id="wrapper">
-    <%= render partial: "partial_index" %>
-        <div id="page-wrapper">
-
+ <div id="wrapper">
+  <%= render partial: "partial_index" %>
+    <div id="page-wrapper">
+     <div class="container-fluid">
+      <div class="col-md-12">
+       <div class="panel panel-default">
+         <div class="panel-body">
+          <div class="row">
+          <div class="col-md-12">
+          <% @avals.each do |aval| %>      
+            <h1 class="page-header">
+               <strong>Nota Parcial: </strong><small> <%= aval.nota %> / 100.0</small>
+            </h1>
+           <ol class="breadcrumb">
+             <li>
+              <% total = aval.colaboracao +  aval.construcao + aval.pcritico + aval.compromisso + aval.criatividade +  aval.comunicacao %>
+               <canvas id="myChart" width="400" height="400"></canvas>
+                  <script >
+                  var ctx = document.getElementById("myChart").getContext('2d');
+                  var myChart = new Chart(ctx, 
+                  {
+                   type: 'radar',
+                    data: 
+                    {
+                     labels: ["Colaboração", "Construção", "Pensamento Critico", "Compromisso", "Criatividade", "Comunicação"],
+                     datasets: 
+                     [
+                      {
+                       label: 'Minhas Habilidades',
+                       data: [<%= aval.colaboracao/total * 100 %>, <%= aval.construcao/total * 100 %>, <%= aval.pcritico/total * 100 %>, <%= aval.compromisso/total * 100 %>, <%= aval.criatividade/total * 100 %>, <%= aval.comunicacao/total * 100 %>],
+                       backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                       borderColor: 'rgba(255,99,132,1)',
+                       borderWidth: 2
+                      }
+                     ]
+                    }
+                  });
+                </script>
+             <%end%>
+            </li>
+           </ol>
+          </div>
+         </div>
         </div>
-        <!-- /#page-wrapper -->
+       </div>
+      </div>
+     </div>
     </div>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin/js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin/js/plugins/morris/raphael.min.js"></script>
-    <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin/js/plugins/morris/morris.min.js"></script>
-    <script src="https://blackrockdigital.github.io/startbootstrap-sb-admin/js/plugins/morris/morris-data.js"></script>
-
+   </div>
 </body>

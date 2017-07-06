@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nota: 1.5
+  comunicacao: 1.5
+  colaboracao: 1.5
+  construcao: 1.5
+  pcritico: 1.5
+  compromisso: 1.5
+  criatividade: 1.5
+  user: one
+
+two:
+  nota: 1.5
+  comunicacao: 1.5
+  colaboracao: 1.5
+  construcao: 1.5
+  pcritico: 1.5
+  compromisso: 1.5
+  criatividade: 1.5
+  user: two
