@@ -4,7 +4,7 @@ class AlunosController < ApplicationController
     @tasks    = Task.where("DATE(?) BETWEEN abertura AND fechamento", Time.now)
     @answers  = Answer.where(subtask_id: Subtask.where(task_id: Task.where("DATE(?) <= date(fechamento, '+7 day')", Time.now)))
     @avals    = Avaliar.where(user_id: current_user.id)
-    @likes    = current_user.likes.select(:answer_id)
+    @likes    = Like.where(user_id: current_user.id)
   end
 
   def missao
