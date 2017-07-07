@@ -1,0 +1,2 @@
+class TipoPuclet < ApplicationRecord
+end

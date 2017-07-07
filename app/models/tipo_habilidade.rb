@@ -1,0 +1,2 @@
+class TipoHabilidade < ApplicationRecord
+end

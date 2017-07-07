@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :tipo_puclets
+  resources :tipo_habilidades
   resources :likes
   resources :avaliars
   resources :answers do
