@@ -51,9 +51,11 @@
                     </div>
                     <div class="col-md-3">
                        <!-- ao clicar no botão permanecer na pag e computar o like/dislike/report-->
-                       <%= link_to "Report", report_answer_url(id: answers.id), method: :post, class: "btn btn-primary pull-right"%>
-                       <%= link_to "Disike", dislike_answer_url(id: answers.id), method: :post, class: "btn btn-danger pull-right"%>
-                       <%= link_to "Like", like_answer_url(id: answers.id), method: :post, class: "btn btn-success pull-right"%>
+                        <%= link_to "Report", report_answer_url(id: answers.id), method: :post, class: "btn btn-primary pull-right"%>
+                        <% if !@likes.exists?(answers.id) %>
+                          <%= link_to "Disike", dislike_answer_url(id: answers.id), method: :post, class: "btn btn-danger pull-right"%>
+                          <%= link_to "Like", like_answer_url(id: answers.id), method: :post, class: "btn btn-success pull-right"%>
+                        <%end%>
 
 
                     </div>

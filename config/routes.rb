@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :likes
   resources :avaliars
   resources :answers do
     member do
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
   get 'professores/aluno_resumo'
   get 'administradores/index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'registrations' }
   devise_scope :user do
       root :to => 'devise/sessions#new'
   end

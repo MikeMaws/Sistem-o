@@ -63,11 +63,13 @@ class AnswersController < ApplicationController
 
   def like
     @answer.update(like: @answer.like+1)
+    Like.create({user_id: current_user.id, answer_id: @answer.id})
     redirect_to request.referer
   end
 
   def dislike
     @answer.update(dislike: @answer.dislike+1)
+    Like.create({user_id: current_user.id, answer_id: @answer.id})
     redirect_to request.referer
   end
 
