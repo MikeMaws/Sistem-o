@@ -11,15 +11,18 @@
               Lista de alunos cadastrados <small>Computação Paralela</small>
           </h1>
           <div class="row">
+            <div class = col-md-3><h3>Nome</h3></div>
+            <div class = col-md-2><h3>Matricula</h3></div>
             <div class = col-md-4><h3>Email</h3></div>
           </div>
           
           <% @users.each do |user| %>
           <div class="row">
+            <div class = col-md-3><h3><%= user.name %></h3></div>
+            <div class = col-md-2><h3><%= user.matricula %></h3></div>
             <div class = col-md-4><h3><%= user.email %></h3></div>
-            <div class="col-md-3">
-             <!-- ao clicar no botão permanecer na pag e computar o like/dislike/report-->
-             <%= link_to "Habilidades", "aluno_resumo?user_id=#{user.id}", class: "btn btn-primary pull-right",target: :_blank%>
+            <div class="col-md-2">
+            <h3> <%= link_to "Habilidades", "aluno_resumo?user_id=#{user.id}", class: "btn btn-primary pull-right",target: :_blank%></h3>
             </div>
           </div>
           <%end%>

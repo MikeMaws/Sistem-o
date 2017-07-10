@@ -9,6 +9,6 @@ Modificar :
   Alterar data de fechamento das task listadas para ultimo dia do semestre
   quando criar usuario verificar se ele e aluno ou professor para gerar as tab dos usuario
   criar tipo de campo que o professor pode selecionar para a subtask (link,multipla escolha etc)
-
+  remover sign up da tela de login
 
 
