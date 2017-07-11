@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post 'like'
       post 'dislike'
       post 'report'
+      post 'nivel'
     end
 
   end

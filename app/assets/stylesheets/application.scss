@@ -14,15 +14,19 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  
-
+//login parte
 body 
 {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #fff;
+ 		background-color: #1abc9c;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position: 100% 100%;
 }
+
 
 [ui-view] {
     position: absolute;
@@ -281,5 +285,4 @@ body
 		max-width: 200px;
 	}
 }
-
 

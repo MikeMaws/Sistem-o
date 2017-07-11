@@ -21,23 +21,23 @@
             <%= link_to answers.link , target: :_blank do %>
 
              <div class="col-md-5">
-                <h5 class="glyphicon glyphicon-thumbs-up "><strong> <%= answers.subtask.task.nome%> </strong> <small> <%=answers.subtask.nome%> </small> </h5>
+                <h4 class="glyphicon glyphicon-thumbs-up "><span> <%= answers.subtask.task.nome%> </span> <small> <%=answers.subtask.nome%> </small> </h4>
 
             </div>
             <%end%>
 
               <div class="col-md-2">
-                <span class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span> </span>
+                <span class="glyphicon glyphicon-thumbs-up", type= "text"> <span class =" badge pull-right"><%= answers.like %> </span> </span>
                 <span class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </span>
                 <span class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </span>
               </div>
               
               <!-- tem que corrigir somente teste-->
                <div class = col-md-1>  <%= select_tag 'user_id', options_for_select(@answers.collect{ |u| [ u.id] }) %> </div>
-   
+               
                <div class = col-md-3> observação </div>
               
-               <div class = "col-md-1 btn btn-primary pull-right"> confirmar </div>
+               <div class = "col-md-1"> <%= link_to "Corrigir", nivel_answer_url(id: answers.id), method: :post, class: "btn btn-success pull-right"%> </div>
                
            
            </div>

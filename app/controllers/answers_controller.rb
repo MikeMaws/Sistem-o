@@ -77,6 +77,11 @@ class AnswersController < ApplicationController
     @answer.update(report: @answer.report+1)
     redirect_to request.referer
   end
+  
+  def nivel
+    @answer.update(nivel: @answer.nivel+1)
+    redirect_to request.referer
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -86,6 +91,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:subtask_id, :link, :like, :dislike, :report, :user_id)
+      params.require(:answer).permit(:subtask_id, :link, :like, :dislike, :report, :user_id, :nivel)
     end
 end
