@@ -1,79 +1,78 @@
 <body>
  <div id="wrapper">
-  <% if policy(@user).edit? %> 
-    <%= render partial: "professores/partial_index" %>
-  <%else%>
-    <%= render partial: "alunos/partial_index" %>
-  <%end%>
-
+  <%= render partial: "users/sessions/partial_index" %>
     <div class="container-fluid">
       <div class="col-md-12">
-       <div class="panel panel-default">
+      <div class="panel-heading fundo-verde ">
+        <div class = "row  margin-left-15 margin-right-15">  
+          <div class="col-md-12 letra-branca" align = "left">
+           <h1 class="page-header">  Editar meus dados </h1>
+          </div> 
+        </div>
+         
           <div class="panel-heading">
-            <H2 align = "center"> <strong>Editar meus dados</strong> </H2>
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= devise_error_messages! %>
           </div>
           
           <div class="panel-body">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="form-group">
-                 <div class = col-md-2><H5> <strong> Matricula: </strong> </H5></div>
-                 <div class = col-md-3><H5> <%= f.label current_user.matricula , id: :matricula %></H5> </div>
-                 </div>
-              </div>  
-              
-              <div class="row">
-                <div class="form-group">
-                 <div class = col-md-2><H5> <strong> Nome: </strong> </H5></div>
-                 <div class = col-md-3><H5> <%= f.label current_user.name, id: :name%> </H5> </div>
-                </div>  
-              </div>  
-              
-              <div class="row">
-                <div class="form-group">
-                 <div class = col-md-2><H5> <strong> Email: </strong> </H5></div>
-                 <div class = col-md-5> <%= f.email_field :email, id: :email, autofocus: true,  class:'form-control'%> </div>
-                </div>  
-                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <div class="container-fluid  margin-left-15 margin-right-15">
+            <div class="row">
+              <div class="form-group">
+              <div class = "col-md-2 letra-branca"><H5> <strong> Matricula: </strong> </H5></div>
+              <div class = "col-md-3 letra-branca"><H5><%= f.label current_user.matricula , id: :matricula %></h5> </div>
+            </div> 
+            </div>
+            
+            <div class="row">
+              <div class="form-group">
+              <div class = "col-md-2 letra-branca"><H5> <strong> Nome: </strong> </H5></div>
+              <div class = "col-md-3 letra-branca"><H5> <%= f.label current_user.name, id: :name%></h5> </div>
+            </div> 
+            </div>
+            
+             <div class="row">
+              <div class="form-group">
+              <div class = "col-md-2 letra-branca"><H5> <strong> Email: </strong> </H5></div>
+              <div class = "col-md-5 letra-branca"><H5>  <%= f.email_field :email, id: :email, autofocus: true,  class:'form-control'%></h5> </div>
+            </div> 
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+            </div>
+            
+            <div class="row">
+              <div class="form-group">
+              <div class = "col-md-2 letra-branca"><H5> <strong> Nova Senha: </strong> </H5></div>
+              <div class = "col-md-5 letra-branca"><H5> <%= f.password_field :password, id: :password, autocomplete: "off",  class:'form-control'%> </h5> </div>
+              <div class = "col-md-5  letra-branca">
+                <i>(Deixe em branco caso não queira alterar)</i>
+                <% if @minimum_password_length %><br />
+                  <em><%= @minimum_password_length %> é o minimo de caracteres</em>
                 <% end %>
-              </div>  
-              
-              <div class="row">
-                <div class="form-group">
-                 <div class = col-md-2><H5> <strong> Nova senha: </strong> </H5></div>
-                 <div class = col-md-5> <%= f.password_field :password, id: :password, autocomplete: "off",  class:'form-control'%> </div>
-                 <div class = col-md-5>
-                    <i>(Deixe em branco caso não queira alterar)</i>
-                    <% if @minimum_password_length %><br />
-                      <em><%= @minimum_password_length %> é o minimo de caracteres</em>
-                    <% end %>
-                    </div>
-                </div>  
               </div>
-              
-              <div class="row">
-                <div class="form-group">
-                 <div class = col-md-2><H5> <strong> Confirmar senha: </strong></H5></div>
-                 <div class = col-md-5> <%= f.password_field :password_confirmation , id: :password_confirmation , autocomplete: "off",  class:'form-control'%> </div>
-                </div>  
-              </div>  
-              
-              <div class="row">
-                <div class="form-group">
-                 <div class = col-md-2><H5> <strong> Senha atual: </strong></H5></div>
-                 <div class = col-md-5> <%= f.password_field :current_password , id: :current_password , autocomplete: "off",  class:'form-control'%> </div>
-                 <div class = col-md-5> <i>(Necessário para confirmar as alterações)</i> </div> 
-                
-                </div>  
-              </div>  
-                   
+            </div> 
+            </div>
+            
+            <div class="row">
+              <div class="form-group">
+              <div class = "col-md-2 letra-branca"><H5> <strong> Confirmar Senha: </strong> </H5></div>
+              <div class = "col-md-5 letra-branca"><H5>  <%= f.password_field :password_confirmation , id: :password_confirmation , autocomplete: "off",  class:'form-control'%></h5> </div>
+            </div> 
+            </div>
+            
+            
+            <div class="row">
+              <div class="form-group">
+              <div class = "col-md-2 letra-branca"><H5> <strong> Senha Atual: </strong> </H5></div>
+              <div class = "col-md-5 letra-branca"><H5> <%= f.password_field :current_password , id: :current_password , autocomplete: "off",  class:'form-control'%></h5> </div>
+              <div class = "col-md-5 letra-branca"> <i>(Necessário para confirmar as alterações)</i> </div> 
+            </div> 
+            </div>
+          
               <div class="row">
                 <div class="actions  col-md-6">
                  <%= f.submit "Update", class: 'btn btn-primary' %>
-                 <%= link_to 'Voltar', :back %>
                 </div>
               </div>         
             <% end %>

@@ -1,4 +1,4 @@
-<% if policy(@task).new? %>
+<% if policy(current_user).professor? %>
 <%= render 'form', task: @task %>
 <% end %>
 

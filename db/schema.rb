@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710133423) do
+ActiveRecord::Schema.define(version: 20170711205206) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "subtask_id"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20170710133423) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "novato", default: 0
+    t.integer "competente", default: 0
+    t.integer "mestre", default: 0
     t.index ["user_id"], name: "index_avaliars_on_user_id"
   end
 
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 20170710133423) do
   end
 
   create_table "nivels", force: :cascade do |t|
-    t.integer "posicao"
+    t.string "posicao"
     t.string "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,10 +81,10 @@ ActiveRecord::Schema.define(version: 20170710133423) do
   end
 
   create_table "subtasks", force: :cascade do |t|
-    t.boolean "status"
+    t.boolean "status", default: true
     t.string "nome"
     t.text "descricao"
-    t.boolean "avaliativa"
+    t.boolean "avaliativa", default: true
     t.date "entrega"
     t.integer "task_id"
     t.string "material_type"

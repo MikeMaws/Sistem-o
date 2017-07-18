@@ -1,77 +1,61 @@
 <body>
- <div id="wrapper">
-  <%= render partial: "partial_index" %>
-    <div id="page-wrapper">
-     <div class="container-fluid">
-      <div class="col-md-12">
-       <div class="panel panel-default">
-         <div class="panel-body">
-          <div class="row">
-          <div class="col-md-12">
-           <ol class="breadcrumb">
-            <li class="active">
-             <i class="fa fa-trophy fa-2x"></i><strong> Posição Atual Media : Novato</strong>
-            </li>
-             <li class="active">
-              <% @avals.each do |aval| %>
-             <strong>Nota Parcial: <%= aval.nota %> / 100.0</strong>
-             <%end%>
-            </li>
-           </ol>
-          </div>
-         </div>
-         <h1 class="page-header">
-          Linha do tempo <small>Computação Paralela</small>
-         </h1>
-          <div class="list-group">
+<div id="wrapper ">
+  <%= render partial: "users/sessions/partial_index" %>
+   <div id="page-wrapper ">
+    <div class="container-fluid margin-right-30 margin-left-30">
+      <div class ="fundo-verde-2 ">  
+      
+       <h1 class="page-header letra-branca  margin-left-05  margin-right-05"> TAREFAS ABERTAS </h1>
+        <div class="panel-body margin-left-15">
+          <div class="row list-group-item fundo-verde-claro">
            <% @tasks.each do |task| %>
             <%= link_to "resolver_task?task_id=#{task.id}", class: "list-group-item" do %>
-             <span class="badge pull-right"><%= task.abertura %> </span>
-              <i class="glyphicon glyphicon-tasks"> <%= task.nome %></i>
-             <%end%>
-           <% end %>
-          </div>
-
-           <div class="list-group">
-           <% @answers.each do |answers| %>
-                 <div class="row list-group-item">
-                  <%= link_to answers.link , target: :_blank do %>
-
-                   <div class="col-md-7">
-                      <!-- listar nome task subtask-->
-                      <h5 class="glyphicon glyphicon-thumbs-up "><strong> <%= answers.subtask.task.nome%> </strong> <small> <%=answers.subtask.nome%> </small> </h5>
-
-                  </div>
-                  <%end%>
-
-                    <div class="col-md-2">
-                      <span class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span> </span>
-                      <span class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </span>
-                      <span class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </span>
-                    </div>
-                    <div class="col-md-3">
-                       <!-- ao clicar no botão permanecer na pag e computar o like/dislike/report-->
-                        <%= link_to "Report", report_answer_url(id: answers.id), method: :post, class: "btn btn-primary pull-right"%>
-                        <% if !@likes.exists?({answer_id: answers.id}) %>
-                          <%= link_to "Disike", dislike_answer_url(id: answers.id), method: :post, class: "btn btn-danger pull-right"%>
-                          <%= link_to "Like", like_answer_url(id: answers.id), method: :post, class: "btn btn-success pull-right"%>
-                        <%end%>
-
-
-                    </div>
-                 </div>
-
+             <div class="letra-verde">
+               <h5 class="glyphicon glyphicon-tasks "><strong> <%= task.nome %> </strong> </h5>
+             </div>
             <%end%>
-           </div>
+           <%end%>
+          </div>
+         </div> 
+         
+       <h1 class="page-header letra-branca  margin-left-05  margin-right-05"> AVALIE OS OUTROS ALUNOS </h1>
+       <div class="panel-body margin-left-15">
+        <div class="list-group">
+         <% @answers.each do |answers| %>
+          
+          <div class="row list-group-item fundo-verde-claro">
+           <%= link_to answers.link , target: :_blank do %>
+             <div class="col-md-5 letra-verde">
+               <h5 class="glyphicon glyphicon-thumbs-up "><strong> <%= answers.subtask.task.nome%> </strong> <small> <%=answers.subtask.nome%> </small> </h5>
+             </div>
+           
+             <div class="col-md-3 letra-verde">
+              <h5 class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span></h5>
+              <h5 class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </h5>
+              <h5 class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </h5>
+             </div>
+             
+               <div class="col-md-3">
+                 <%= link_to "Report", report_answer_url(id: answers.id), method: :post, class: "btn btn-primary pull-right"%>
+                 <% if !@likes.exists?({answer_id: answers.id}) %>
+                 <%= link_to "Disike", dislike_answer_url(id: answers.id), method: :post, class: "btn btn-danger pull-right"%>
+                 <%= link_to "Like", like_answer_url(id: answers.id), method: :post, class: "btn btn-success pull-right"%>
+                 <%end%>
+               </div>
+             
+           <%end%>
+          </div>
+          <%end%>
+         </div>
+        </div>  
+       </div>  <!-- fundo verde-->   
+     </div>    
+    </div>   
+   </div>   
+</body> 
 
-        </div>
-       </div>
-      </div>
-     </div>
-     <!-- /.container-fluid -->
-    </div>
-   </div>
-  <!-- /#page-wrapper -->
-  </div>
-<!-- /#wrapper -->
-</body>
+
+
+
+
+

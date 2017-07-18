@@ -1,51 +1,133 @@
 <body>
- <div id="wrapper">
-  <%= render partial: "partial_index" %>
-    <div id="page-wrapper">
-     <div class="container-fluid">
-      <div class="col-md-12">
-       <div class="panel panel-default">
-         <div class="panel-body">
-          <div class="row">
-          <div class="col-md-12">
-          <% @avals.each do |aval| %>      
-            <h1 class="page-header">
-               <strong>Nota Parcial: </strong><small> <%= aval.nota %> / 100.0</small>
-            </h1>
-           <ol class="breadcrumb">
-             <li>
-              <% total = aval.colaboracao +  aval.construcao + aval.pcritico + aval.compromisso + aval.criatividade +  aval.comunicacao %>
-               <canvas id="myChart" width="400" height="400"></canvas>
-                  <script >
-                  var ctx = document.getElementById("myChart").getContext('2d');
-                  var myChart = new Chart(ctx, 
-                  {
-                   type: 'radar',
-                    data: 
-                    {
-                     labels: ["Colaboração", "Construção", "Pensamento Critico", "Compromisso", "Criatividade", "Comunicação"],
-                     datasets: 
-                     [
-                      {
-                       label: 'Minhas Habilidades',
-                       data: [<%= aval.colaboracao/total * 100 %>, <%= aval.construcao/total * 100 %>, <%= aval.pcritico/total * 100 %>, <%= aval.compromisso/total * 100 %>, <%= aval.criatividade/total * 100 %>, <%= aval.comunicacao/total * 100 %>],
-                       backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                       borderColor: 'rgba(255,99,132,1)',
-                       borderWidth: 2
-                      }
-                     ]
-                    }
-                  });
-                </script>
-             <%end%>
-            </li>
-           </ol>
-          </div>
-         </div>
+<div id="wrapper ">
+  <%= render partial: "users/sessions/partial_index" %>
+   <div id="page-wrapper ">
+    <div class="container-fluid margin-right-30 margin-left-30">
+      <div class ="fundo-verde-2 ">  
+     
+     
+       <div class="panel-heading ">
+        
+        <div class = "row">  
+        <div class="col-md-6 letra-branca" align = "center">
+         <h1> <i class="glyphicon glyphicon-user"></i> Matricula: <%= @user.matricula %></h1>
+         </div> 
+         <div class="col-md-6 letra-branca" align = "left">
+         <h1> <i class="glyphicon glyphicon-envelope"></i> Email: <%= @user.email %></h1>
+         </div> 
         </div>
-       </div>
+        
+        <div class="row ">
+         <div class="col-md-3 letra-branca" align = "center">
+           <strong> Nota parcial: </strong> <small> <%=  @aval.nota %> / 100.0 </small>
+         </div> 
+         <div class="col-md-3 letra-branca" align = "center">
+          <i class="glyphicon glyphicon-bishop"></i> <strong> Novato x </strong> <small> <%= @aval.novato%> </small>
+         </div> 
+         <div class="col-md-3 letra-branca " align = "center">
+          <i class="glyphicon glyphicon-bishop"></i> <strong>Competente x </strong> <small> <%= @aval.competente %></small>
+         </div> 
+         <div class="col-md-3 letra-branca" align = "center">
+           <i class="glyphicon glyphicon-bishop"></i> <strong>Mestre x </strong>  <small> <%= @aval.mestre %></small>
+         </div> 
+       </div>   
       </div>
-     </div>
-    </div>
-   </div>
-</body>
+      
+      <div class = "row margin-left-30">
+       <div class = "col-md-5 ">
+        <ol class="breadcrumb fundo-vermelho-escuro">
+         <li>
+          <% total = @aval.colaboracao +  @aval.construcao + @aval.pcritico + @aval.compromisso + @aval.criatividade +  @aval.comunicacao %>
+           <canvas id="myChart" width="500" height="400"></canvas>
+            <script >
+             var ctx = document.getElementById("myChart").getContext('2d');
+             var myChart = new Chart(ctx, 
+             {
+              type: 'radar',
+              data: 
+              {
+               labels: ["Colaboração", "Construção", "Pensamento Critico", "Compromisso", "Criatividade", "Comunicação"],
+               datasets: 
+               [
+                {
+                 label: 'Minhas Habilidades',
+                 data: [<%= @aval.colaboracao/total * 100 %>, <%= @aval.construcao/total * 100 %>, <%= @aval.pcritico/total * 100 %>, <%= @aval.compromisso/total * 100 %>, <%= @aval.criatividade/total * 100 %>, <%= @aval.comunicacao/total * 100 %>],
+                 backgroundColor: '#e53935',
+                 borderColor: 'white',
+                 borderWidth: 2
+                }
+               ]
+              }
+             });
+            </script>
+         </li>
+        </ol>
+       </div>
+       
+       <div class = "col-md-6 margin-left-30" align = "center">
+        <div class = "col-md-6 letra-branca" align = "left">
+         <h1> Colaboração: </h1>
+         <h1> Construção: </h1>
+         <h1> Pensamento critico: </h1>
+         <h1> Compromisso: </h1>
+         <h1> Criatividade: </h1>
+         <h1> Comunicação: </h1>
+        </div>
+        <div class = "col-md-6 letra-branca"  align = "left">
+         <h1> <%= (@aval.colaboracao/total * 100).round %> %</h1>
+         <h1> <%= (@aval.construcao/total * 100).round %> %</h1>
+         <h1> <%= (@aval.pcritico/total * 100).round %> %</h1>
+         <h1> <%= (@aval.compromisso/total * 100).round %> %</h1>
+         <h1> <%= (@aval.criatividade/total * 100).round %> %</h1>
+         <h1> <%= (@aval.comunicacao/total * 100).round %> %</h1>
+        </div>
+       </div> 
+      </div>
+      
+       <h1 class="page-header letra-branca  margin-left-05  margin-right-05"> Tarefas concluidas do aluno </h1>
+       <div class="panel-body margin-left-15">
+        <div class="list-group">
+         <% @answers.each do |answers| %>
+          
+          <div class="row list-group-item fundo-verde-claro">
+           <%= link_to answers.link , target: :_blank do %>
+             <div class="col-md-5 letra-verde">
+               <h5 class="glyphicon glyphicon-thumbs-up "><strong> <%= answers.subtask.task.nome%> </strong> <small> <%=answers.subtask.nome%> </small> </h5>
+             </div>
+           
+             <div class="col-md-2 letra-verde">
+              <h5 class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span></h5>
+              <h5 class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </h5>
+              <h5 class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </h5>
+             </div>
+             
+             <div class="col-md-3 letra-verde">
+              <h5 class="glyphicon glyphicon-bishop"> Nivel:
+               <% if answers.nivel == 1 %> Novato
+                <% else if answers.nivel == 2 %> Competente
+                 <% else if answers.nivel == 3 %> Mestre
+                 <%end%>
+                <%end%> 
+               <%end%>
+              </h5> 
+            </div>
+             
+            <!-- alterar para remover o nivel antigo da habilidade do aluno -->
+            <% if policy(@user).professor? %>  
+              <div class = "col-md-1 letra-verde"> <%= link_to "Edit", nivel_answer_url(id: answers.id, nivel: 1), method: :post, class: "btn btn-primary pull-left form-control"%> </div>
+             <% else if policy(@user).aluno? %> 
+              <div class="col-md-2 letra-verde" align = "left"><span>Observações</span></div>
+             <%end%>
+            <%end%>             
+             
+           <%end%>
+          </div>
+          <%end%>
+         </div>
+        </div>  
+       </div>  <!-- fundo vermelho-->   
+     </div>    
+    </div>   
+   </div>   
+ </div>   
+</body> 

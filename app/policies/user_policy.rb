@@ -16,6 +16,14 @@ class UserPolicy < ApplicationPolicy
     user.professor?
   end
   
+  def professor?
+    user.professor?
+  end
+  
+  def aluno?
+    user.aluno?
+  end  
+  
   class Scope < Scope
     def resolve
       scope

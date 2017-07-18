@@ -69,6 +69,6 @@ class AvaliarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def avaliar_params
-      params.require(:avaliar).permit(:nota, :comunicacao, :colaboracao, :construcao, :pcritico, :compromisso, :criatividade, :user_id)
+      params.require(:avaliar).permit(:nota, :comunicacao, :colaboracao, :construcao, :pcritico, :compromisso, :criatividade, :user_id, :novato, :competente, :mestre)
     end
 end

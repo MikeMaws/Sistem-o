@@ -1,46 +1,36 @@
+<% if policy(current_user).professor? %>
 <body>
-<% if policy(@users).alunos? %>
- <div id="wrapper">
-  <%= render partial: "professores/partial_index" %>
-    <div id="page-wrapper"> 
-     <div class="container-fluid">
-      <div class="col-md-12">
-       <div class="panel panel-default">
-         <div class="panel-body">
-          <h1 class="page-header">
-              Lista de alunos cadastrados <small>Computação Paralela</small>
-          </h1>
-          <div class="row">
-            <div class = col-md-3><h3>Nome</h3></div>
-            <div class = col-md-2><h3>Matricula</h3></div>
-            <div class = col-md-4><h3>Email</h3></div>
+ <div id="wrapper ">
+  <%= render partial: "users/sessions/partial_index" %>
+   <div id="page-wrapper ">
+    <div class="container-fluid margin-right-30 margin-left-30">
+      <div class ="fundo-verde-2 ">  
+       
+       <h1 class="page-header letra-branca  margin-left-05  margin-right-05"> Lista de alunos cadastrados </h1>
+        <div class="panel-body margin-left-15">
+          <div class="row list-group-item fundo-verde-2">
+            <div class = "col-md-3 letra-branca"><h3>Nome</h3></div>
+            <div class = "col-md-2 letra-branca"><h3>Matricula</h3></div>
+            <div class = "col-md-4 letra-branca"><h3>Email</h3></div>
           </div>
           
           <% @users.each do |user| %>
-          <div class="row">
-            <div class = col-md-3><h3><%= user.name %></h3></div>
-            <div class = col-md-2><h3><%= user.matricula %></h3></div>
-            <div class = col-md-4><h3><%= user.email %></h3></div>
-            <div class="col-md-2">
-            <h3> <%= link_to "Habilidades", "aluno_resumo?user_id=#{user.id}", class: "btn btn-primary pull-right",target: :_blank%></h3>
+          <div class="row list-group-item fundo-verde-2">
+            <div class = "col-md-3 letra-branca"><h3><%= user.name %></h3></div>
+            <div class = "col-md-2 letra-branca"><h3><%= user.matricula %></h3></div>
+            <div class = "col-md-4 letra-branca"><h3><%= user.email %></h3></div>
+            <div class = "col-md-3 letra-branca">
+             <h3> <%= link_to "Habilidades", "/alunos/grafico_habilidade?user_id=#{user.id}",:style=>'color:#FFFFFF;', :class => "pull-right css_class margin-right-05",target: :_blank %></h3>
             </div>
           </div>
           <%end%>
-        </div>
-       </div>
-      </div>
-     </div>
-     <!-- /.container-fluid -->
-   </div>
-  <!-- /#page-wrapper -->
-  </div>
-<!-- /#wrapper -->
-<% end %>
-</body>
-
-
-
-
+           
+       </div> 
+      </div>  
+    </div> 
+ </div>    
+</body> 
+<%end%>
 
 
 

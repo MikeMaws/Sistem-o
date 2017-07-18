@@ -1,6 +1,6 @@
 <body>
-<% if policy(@task).show? %>
-  <%= render partial: "professores/partial_index" %>
+<% if policy(current_user).professor? %>
+   <%= render partial: "users/sessions/partial_index" %>
   <div class="container">
       <div class="panel panel-default ">
         <div class="container ">

@@ -1,0 +1,88 @@
+<nav class="navbar navbar-toggleable-md navbar-dark fundo-verde letra-branca">
+  <div class="container-fluid ">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="text-center pull-right photo"> <img src="/images/comput.png" width = "55" height = "55" class="icon-system img-circle img-responsive"> </div>  
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav margin-left-10">
+        <% if policy(current_user).aluno? %>
+          <li class="<%= 'active' if current_page?(alunos_linha_do_tempo_path) %>"><%= link_to "Linha do tempo", alunos_linha_do_tempo_path, class: "color-nav-letra" %></li>
+          <li class="<%= 'active' if current_page?(alunos_missao_path) %>"><%= link_to "Missões", alunos_missao_path, class: "color-nav-letra" %> </li>
+          <li class="<%= 'active' if current_page?(alunos_privilegio_path) %>"><%= link_to "Privilégios", alunos_privilegio_path,class: "color-nav-letra" %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle color-nav-letra " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Gráficos <span class="caret"></span></a>
+            <ul class="dropdown-menu color-nav-letra  ">
+              <li><a href="#"></a></li>
+              <li><%= link_to "Habilidades","/alunos/grafico_habilidade?user_id=#{current_user.id}"%></li>
+              <li><%= link_to "Progresso", alunos_grafico_progresso_path, class: "color-nav-letra" %></li>
+            </ul>
+          </li>
+        <%end%>
+        <% else if policy(current_user).professor? %>
+          <li class="<%= 'active' if current_page?(professores_linha_do_tempo_path) %>"><%= link_to "Linha do tempo", professores_linha_do_tempo_path, class: "color-nav-letra" %></li>
+          <li class="<%= 'active' if current_page?(tasks_path) %>"><%= link_to "Task", tasks_path, class: "color-nav-letra" %> </li>
+          <li class="<%= 'active' if current_page?(professores_alunos_path) %>"><%= link_to "Alunos", professores_alunos_path, class: "color-nav-letra" %> </li>
+        <%end%>  
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell color-nav-letra" ></span></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li class="message-preview">
+              <a href="#">
+              <div class="media">
+                <div class="media-body">
+                  <h5 class="media-heading glyphicon glyphicon-tasks"><strong>  Tarefa</strong></h5>
+                    <p class="small text-muted"><i class="glyphicon glyphicon-clock"></i> ontem  6:32 </p>
+                      <p>Fazer uma aplicação utilizando CUDA</p>
+                </div>
+              </div>
+              </a>
+            </li>
+            
+            <li class="message-preview">
+              <a href="#">
+              <div class="media">
+                <div class="media-body">
+                  <h5 class="media-heading glyphicon glyphicon-tasks"><strong>  Tarefa</strong></h5>
+                    <p class="small text-muted"><i class="glyphicon glyphicon-clock"></i> ontem  6:32 </p>
+                      <p>Fazer uma aplicação utilizando CUDA</p>
+                </div>
+              </div>
+              </a>
+            </li>
+            
+            <li class="message-footer">
+              <a href="#">Read All New Messages</a>
+            </li>
+          </ul>
+        </li>
+     
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle color-nav-letra " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Meus dados", edit_user_registration_path %></li>
+            <li><%= link_to "Sair", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+

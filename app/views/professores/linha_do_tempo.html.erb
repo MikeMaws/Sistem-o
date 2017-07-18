@@ -1,67 +1,43 @@
+<% if policy(current_user).professor? %>
 <body>
-<% if policy(@users).linha_do_tempo? %>
- <div id="wrapper">
-  <%= render partial: "professores/partial_index" %>
-    <div id="page-wrapper"> 
-     <div class="container-fluid">
-      <div class="col-md-12">
-       <div class="panel panel-default">
-         <div class="panel-body">
-          <h1 class="page-header">
-              Lista de alunos cadastrados <small>Computação Paralela</small>
-          </h1>
-          <div class="row">
-            <div class = col-md-4><h3>Tarefas para correção</h3></div>
-          </div>
+ <div id="wrapper ">
+  <%= render partial: "users/sessions/partial_index" %>
+   <div id="page-wrapper ">
+    <div class="container-fluid margin-right-30 margin-left-30">
+      <div class ="fundo-verde-2 ">  
+       <h1 class="page-header letra-branca  margin-left-05  margin-right-05"> Tarefas para correção </h1>
+        <div class="panel-body margin-left-15">
+        <div class="list-group">
+         <% @answers.each do |answers| %>
           
-          
-          <div class="list-group">
-            <% @answers.each do |answers| %>
-           <div class="row list-group-item">
-            <%= link_to answers.link , target: :_blank do %>
-
-             <div class="col-md-5">
-                <h4 class="glyphicon glyphicon-thumbs-up "><span> <%= answers.subtask.task.nome%> </span> <small> <%=answers.subtask.nome%> </small> </h4>
-
-            </div>
-            <%end%>
-
-              <div class="col-md-2">
-                <span class="glyphicon glyphicon-thumbs-up", type= "text"> <span class =" badge pull-right"><%= answers.like %> </span> </span>
-                <span class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </span>
-                <span class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </span>
-              </div>
-              
-              <!-- tem que corrigir somente teste-->
-               <div class = col-md-1>  <%= select_tag 'user_id', options_for_select(@answers.collect{ |u| [ u.id] }) %> </div>
-               
-               <div class = col-md-3> observação </div>
-              
-               <div class = "col-md-1"> <%= link_to "Corrigir", nivel_answer_url(id: answers.id), method: :post, class: "btn btn-success pull-right"%> </div>
-               
+          <div class="row list-group-item fundo-verde-claro">
+           <%= link_to answers.link , target: :_blank do %>
+             <div class="col-md-4 letra-verde">
+               <h5 class="glyphicon glyphicon-thumbs-up "><strong> <%= answers.subtask.task.nome%> </strong> <small> <%=answers.subtask.nome%> </small> </h5>
+             </div>
            
-           </div>
+             <div class="col-md-2 letra-verde">
+              <h5 class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span></h5>
+              <h5 class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </h5>
+              <h5 class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </h5>
+             </div>
+             <%end%> 
+              <div class = col-md-2>  <%= select_tag 'niveis', options_for_select(@niveis.collect{ |u| [ u.posicao] }), prompt: "Select something", class: "form-control" %> </div>
+               
+              <div class = col-md-3> <%= text_area_tag "descricao", nil ,class: "form-control"%> </div>
+              
+              <!-- tem que corrigir passar o nivel selecionado -->
+              <div class = "col-md-1"> <%= link_to "Corrigir", nivel_answer_url(id: answers.id, nivel: 1), method: :post, class: "btn btn-success pull-right form-control"%> </div>
+              
+             
+           
+            </div>
            <%end%>
-          </div> 
-          
-        </div>
+          </div>
+         </div>
        </div>
-      </div>
-     </div>
-     <!-- /.container-fluid -->
-   </div>
-  <!-- /#page-wrapper -->
-  </div>
-<!-- /#wrapper -->
-<% end %>
-</body>
-
-
-
-
-
-
-
-
-
-
+      </div>  
+     </div> 
+    </div>    
+</body> 
+<%end%>

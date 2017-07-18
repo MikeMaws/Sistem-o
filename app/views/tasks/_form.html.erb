@@ -1,94 +1,114 @@
-<div id="wrapper">
-  <%= render partial: "professores/partial_index" %>
-    <div id="page-wrapper"> 
-     <div class="container-fluid">
-      <div class="col-md-12">
-       <div class="panel panel-default">
-        <%= form_with(model: task, local: true) do |form| %>
-          <div class="panel panel-default">
-            <% if task.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-                <ul> <% task.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-            
-            <div class="panel-body">
-            <h1 class="page-header">
-                Nova Tarefa <small>Computação Paralela</small>
-            </h1>
-            
-            <div class="container">
-              <div class="row">
-                <div class="form-group">
-                 <div class = col-md-1><H5> <strong> Titulo: </strong> </H5></div>
-                 <div class = col-md-6> <%= form.text_field :nome, id: :task_nome, autofocus: true, class:'form-control'%> </div>
-                 <div class = col-md-1><H5> <strong> Ativa: </strong> </H5></div>
-                 <div class = col-md-4> <H5><%= form.check_box :status, id: :task_status %></H5> </div>
-                </div>  
-              </div>  
-            
-              <div class="row">
-                <div class="form-group">
-                  <div class = col-md-1><H5><strong>Objetivo: </strong> </H5></div>
-                  <div class = col-md-6>  <%= form.text_area :descricao, id: :task_descricao, class: 'form-control' %> </div>
-                  <div class = col-md-1><H5> <strong> Abertura: </strong> </H5></div>
-                  <div class = col-md-4> <H5><%= form.datetime_select(:abertura,:start_year => 2017)%></H5> </div>
-                </div>  
-              </div>
+<% if policy(current_user).professor? %>
+<body>
+<div id="wrapper ">
+  <%= render partial: "users/sessions/partial_index" %>
+   <div id="page-wrapper ">
+    <div class="container-fluid margin-right-30 margin-left-30">
+      <div class ="fundo-verde-2 "> 
+      <%= form_with(model: task, local: true) do |form| %>
+        <% if task.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+            <ul> <% task.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+     
+     
+       <div class="panel-heading ">
+        
+        <div class = "row  margin-left-15 margin-right-15">  
+          <div class="col-md-12 letra-branca" align = "left">
+           <h1 class="page-header">  Nova tarefa </h1>
+          </div> 
+        </div>
+        
+        <div class="container-fluid  margin-left-15 margin-right-15">
+          <div class="row">
+            <div class="form-group">
+            <div class = "col-md-1 letra-branca"><H5> <strong> Titulo: </strong> </H5></div>
+            <div class = "col-md-6 letra-branca"> <%= form.text_field :nome, id: :task_nome, autofocus: true, class:'form-control'%> </div>
+            <div class = "col-md-1 letra-branca"><H5> <strong> Ativa: </strong> </H5></div>
+            <div class = "col-md-4 letra-branca"> <H5><%= form.check_box :status, id: :task_status,checked: "checked" %></H5> </div>
+          </div> 
           
-      
-              <div class="row">
-                <div class="form-group">
-                    <H4 class="page-header">Material didatico</H4>
-                  <%= form.fields_for :materialDidatico, task.materialDidatico do |f| %>
-                      <%=render 'materialDidatico_fields', f:f%>
-                  <%end%>
-               </div>
-              </div>  
-             
-                  
-              <div class="row">
-                <div class="form-group">
-                  <%= link_to_add_puclets "Adicionar Material Didatico", form, :materialDidatico, 'add_material_didatico'%>
-                </div>  
-              </div>
-            
-              
-              <div class="row">
-                <div class="form-group">
-                    <H4 class="page-header">Sub Tarefas</H4>
-                  <%= form.fields_for :subtasks do |f| %>
-                        <%=render 'subtask_fields', f:f%>
-                    <%end%>
-               </div>
-              </div> 
-              
-              <div class="row">
-                <div class="form-group">
-                  <%= link_to_add_puclets "Adicionar Subtask", form, :subtasks, 'add_subtask'%>
-                </div>  
-              </div>
-              
-              
-              <div class="row">
-                <H4 class="page-header"></H4>
-                <div class="actions">
-                 <%= form.submit "Criar", class: 'btn btn-primary' %>
-                 <%= link_to 'Voltar', tasks_path %>
-                </div>
-              </div>    
-              </div>
-            </div>
+          <div class="row">
+            <div class="form-group">
+              <div class = "col-md-1 letra-branca "><H5><strong>Objetivo: </strong> </H5></div>
+              <div class = "col-md-6 letra-branca "><h5 class = "margin-left-05"> <%= form.text_area :descricao, id: :task_descricao, class: 'form-control' %></h5> </div>
+              <div class = "col-md-1 letra-branca "><H5> <strong> Abertura: </strong> </H5></div>
+              <div class = "col-md-4 letra-verde "> <H5><%= form.datetime_select(:abertura,:start_year => 2017,:order => [:day, :month, :year],:use_month_names => ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro','Dezembro'])%></H5> </div>
+            </div>  
           </div>
         </div>
-        <% end %>
-      </div>
-    </div> 
-  </div>
-</div> 
+        
+        <div class="row">
+          <div class="form-group">
+            <H4 class="page-header letra-branca margin-left-30 margin-right-30 ">Material didatico</H4>
+            <%= form.fields_for :materialDidatico, task.materialDidatico do |f| %>
+              <%=render 'materialDidatico_fields', f:f%>
+            <%end%>
+          </div>
+        </div> 
+        
+        <div class="row">
+          <div class="form-group letra-branca margin-left-30 margin-right-30 ">
+            <%= link_to_add_puclets "Adicionar Material Didatico", form, :materialDidatico, 'add_material_didatico' %>
+          </div>  
+        </div>
+     
+        <div class="row">
+          <div class="form-group">
+              <H4 class="page-header letra-branca margin-left-30 margin-right-30">Sub Tarefas</H4>
+            <%= form.fields_for :subtasks do |f| %>
+                <%=render 'subtask_fields', f:f%>
+              <%end%>
+         </div>
+        </div> 
+       
+              
+        <div class="row">
+          <div class="form-group  letra-branca margin-left-30 margin-right-30">
+            <%= link_to_add_puclets "Adicionar Subtask", form, :subtasks, 'add_subtask'%>
+            </div>  
+        </div>
+          
+        <div class="row">
+          <H5 class="page-header"></H5>
+            <div class="actions">
+              <%= form.submit "Criar", class: 'btn btn-primary' %>
+              <%= link_to 'Voltar', tasks_path,{:style=>'color:#FFFFFF;', :class => "css_class"} %>
+            </div>
+        </div>       
+        
+        
+            <%end%>
+          </div>
+          <%end%>
+         </div>
+        </div>  
+       </div>  <!-- fundo vermelho-->   
+     </div>    
+    </div>   
+</body> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

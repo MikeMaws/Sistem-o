@@ -79,7 +79,48 @@ class AnswersController < ApplicationController
   end
   
   def nivel
-    @answer.update(nivel: @answer.nivel+1)
+    correcao = Answer.find(params[:id])
+    correcao.nivel = params[:nivel]
+    correcao.save
+    
+    habs = Habilidade.where(subtask_id: correcao.subtask_id)
+    avaliar = Avaliar.find(correcao.user_id)
+    
+    pontos = correcao.nivel
+    
+    if correcao.nivel == 1
+       avaliar.novato += 1
+      else if correcao.nivel == 2   
+         avaliar.competente += 1
+        else if correcao.nivel == 3
+          avaliar.mestre += 1
+        end
+      end
+    end  
+    avaliar.save
+    
+    habs.each do |h|
+      if h.nome == "Colaboracao"
+         avaliar.colaboracao += pontos
+        else if h.nome == "Construcao"   
+           avaliar.construcao += pontos
+          else if h.nome == "Pensamento Critico"   
+             avaliar.pcritico += pontos
+            else if h.nome == "Compromisso"   
+               avaliar.compromisso += pontos
+              else if h.nome == "Criatividade"   
+                avaliar.criatividade += pontos
+                else if h.nome == "Criatividade"   
+                  avaliar.criatividade += pontos
+                end 
+              end 
+            end   
+          end  
+        end
+      end 
+      avaliar.save
+    end
+  
     redirect_to request.referer
   end
 

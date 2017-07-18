@@ -1,6 +1,7 @@
-<div class="panel panel-primary">
+<% if policy(current_user).professor? %>
+<div class="panel panel-primary fundo-vermelho">
   <div class="panel-body">
-    <div class="container">
+    <div class="container ">
       <div class="row">
         <div class="form-group">
           <div class = col-md-1><H4><strong>Titulo: </strong> </H4></div>
@@ -12,5 +13,6 @@
     </div>  
   </div>  
 </div>    
+<%end%>
 
 

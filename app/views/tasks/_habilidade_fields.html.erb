@@ -1,10 +1,12 @@
+<% if policy(current_user).professor? %>
 <div class="panel-body">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="form-group">
         <div class = col-md-1><H4><strong> Nome: </strong> </H4></div>
-        <div class = col-md-3>  <%= f.select :nome, TipoHabilidade.all.collect {|h| h.nome}, class: 'form-control' %> </div>
+        <div class = "col-md-3 letra-verde">  <%= f.select :nome, TipoHabilidade.all.collect {|h| h.nome}, class: 'form-control' %> </div>
       </div>
     </div>
   </div>
 </div>
+<%end%>

@@ -2,7 +2,6 @@
   <div ui-view="" class="ng-scope">
       <div class="ui-base ng-scope"> <!-- uiView:  -->
         <div ui-view="" class="ng-scope">
-           <%= devise_error_messages! %>
           <div class="login-page ng-scope"> 
             <div class="img-container"> 
               <div class="text-center pull-right photo"> <img src="/images/comput.png" class="user-avatar img-circle img-responsive"> <h1>ABATHUR<br> <span>CP VIRTUAL</span><br><small>Versão 1.0</small></h1> </div>  
@@ -10,6 +9,19 @@
             <div class="form-content"> 
               <div  class="bottom-75 ng-pristine ng-valid" ng-submit="submit()"> 
                <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
+                <% flash.each do |name, msg| %>
+                  <% if msg.class == Array %>
+                    <div class="alert alert-danger" role="alert">  
+                      <% msg.each do |message| %>
+                      <%= content_tag :div, message, :id => "flash_#{name}" %>
+                    </div>
+                  <% end %>
+                  <% else %>
+                    <div class="alert alert-danger" role="alert">  
+                      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                    </div>
+                  <% end %> 
+                <% end %>
                 <div class="table-form"> 
                   <div class="form-groups">
                    <div class="form-group "><%= f.text_field :login, autofocus: true,type: "text", class: 'form-control input-lg', placeholder:"MATRICULA OU EMAIL" %>  </div>
