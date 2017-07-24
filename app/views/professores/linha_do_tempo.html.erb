@@ -13,24 +13,30 @@
           <div class="row list-group-item fundo-verde-claro">
            <%= link_to answers.link , target: :_blank do %>
              <div class="col-md-4 letra-verde">
-               <h5 class="glyphicon glyphicon-thumbs-up "><strong> <%= answers.subtask.task.nome%> </strong> <small> <%=answers.subtask.nome%> </small> </h5>
+                 <span class="glyphicon glyphicon-thumbs-up letra-vermelha"><span class= "letra-verde"> <%= answers.subtask.task.nome%> </span></span> 
+                 <p class = "small letra-vermelha-2"> <%=answers.subtask.nome%> </p>          
              </div>
            
-             <div class="col-md-2 letra-verde">
-              <h5 class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span></h5>
-              <h5 class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </h5>
-              <h5 class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </h5>
+             <div class="col-md-3 letra-verde">
+              <h5 class="glyphicon glyphicon-thumbs-up like-avaliacao"> <span class =" label label-success pull-right"><%= answers.like %> </span></h5>
+              <h5 class="glyphicon glyphicon-thumbs-down like-avaliacao"> <span class =" label label-danger pull-right "><%= answers.dislike %> </span> </h5>
+              <h5 class="glyphicon glyphicon-alert  like-avaliacao "> <span class =" label label-primary pull-right"><%= answers.report %> </span> </h5>
              </div>
+             
              <%end%> 
-              <div class = col-md-2>  <%= select_tag 'niveis', options_for_select(@niveis.collect{ |u| [ u.posicao] }), prompt: "Select something", class: "form-control" %> </div>
+              <div class = "col-md-2 ">  
+               <div class = "like-avaliacao"><%= select_tag 'niveis', options_for_select(@niveis.collect{ |u| [ u.posicao] }), prompt: "Select something", class: "select-avaliacao" %> </div>
+              </div>
                
-              <div class = col-md-3> <%= text_area_tag "descricao", nil ,class: "form-control"%> </div>
+              <div class = "col-md-2 " > 
+               <div class = "like-avaliacao pull-left"> <%= text_area_tag "descricao", nil ,class: "observacao-avaliacao"%> </div>
+              </div>
               
               <!-- tem que corrigir passar o nivel selecionado -->
-              <div class = "col-md-1"> <%= link_to "Corrigir", nivel_answer_url(id: answers.id, nivel: 1), method: :post, class: "btn btn-success pull-right form-control"%> </div>
+              <div class = "col-md-1"> 
+                <div class = "like-avaliacao pull-left"><%= link_to "Corrigir", nivel_answer_url(id: answers.id, nivel: 1), method: :post, class: "btn btn-success pull-right btn-avaliacao"%></div> 
+              </div>
               
-             
-           
             </div>
            <%end%>
           </div>

@@ -30,7 +30,7 @@
         <%end%>
         <% else if policy(current_user).professor? %>
           <li class="<%= 'active' if current_page?(professores_linha_do_tempo_path) %>"><%= link_to "Linha do tempo", professores_linha_do_tempo_path, class: "color-nav-letra" %></li>
-          <li class="<%= 'active' if current_page?(tasks_path) %>"><%= link_to "Task", tasks_path, class: "color-nav-letra" %> </li>
+          <li class="<%= 'active' if current_page?(tasks_path) %>"><%= link_to "Tarefas", tasks_path, class: "color-nav-letra" %> </li>
           <li class="<%= 'active' if current_page?(professores_alunos_path) %>"><%= link_to "Alunos", professores_alunos_path, class: "color-nav-letra" %> </li>
         <%end%>  
       </ul>

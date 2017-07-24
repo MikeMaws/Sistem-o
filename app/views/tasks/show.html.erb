@@ -1,50 +1,110 @@
 <body>
 <% if policy(current_user).professor? %>
-   <%= render partial: "users/sessions/partial_index" %>
-  <div class="container">
-      <div class="panel panel-default ">
-        <div class="container ">
-          <div class="col-md-11 col-md-offset-1">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <H2 align = "center"> <strong>Tarefa Número:</strong> <%= @task.id %> </H2>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <H4><strong> Nome: </strong> <%= @task.nome %> </H4>
-                </div>
+  <div id="wrapper">
+    <%= render partial: "users/sessions/partial_index" %>
+      <div class="container">
+          <div class="col-md-10">
+            <div class="panel fundo-verde">
+
+              <div class="panel-heading letra-branca">
+                <H2 align = "center"> <strong>Tarefa Número: </strong> <%= @task.id %> </H2>
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <H4><strong> Objetivo: </strong>  <%= @task.descricao %> </H4>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-9">
-                  <H4><strong> Abertura: </strong> <%= @task.abertura %> </H4>
-                </div>
-                <div class="3">
-                  <H4><strong> Ativa: </strong> <%=  @task.status %> </H4>
-                </div>
-              </div>
-              <div id= "todo_items_wrapper" class="panel panel-default">
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= render @task.materialDidatico %>
-                    <%= render @task.subtasks %>
+
+              <div class="panel-body">
+                <div class="panel fundo-vermelho">
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-md-12 letra-branca">
+                        <H4><strong> Nome: </strong> <%= @task.nome %> </H4>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12 letra-branca">
+                        <H4><strong> Objetivo: </strong>  <%= @task.descricao %> </H4>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-9 letra-branca">
+                        <H4><strong> Abertura: </strong> <%= @task.abertura.strftime("%d/%m/%Y") %> </H4>
+                      </div>
+                      <div class="col-md-3 letra-branca">
+                        <H4><strong> Ativa: </strong> <%=  @task.status %> </H4>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+
+                <div class="panel fundo-verde-2">
+                  <div class="panel-heading letra-branca">
+                    <H3 align = "center "> <strong>Materiais Didaticos</strong> </H3>
+                  </div>
+                  <div class="panel-body">
+                    <% @task.materialDidatico.each do |material| %>
+                     <div class="panel fundo-vermelho">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-12 letra-branca">
+                             <H4><strong> Titulo:  </strong> <%= material.titulo %> </H4>
+                             <H4><strong> Link:  </strong> <%= material.url %> </H4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <%end%>
+                  </div>
+                </div>
+
+                <% @task.subtasks.each do |subtask| %>
+                <div i class="panel fundo-verde-2">
+                  <div class="panel-heading letra-branca">
+                    <H3 align = "center"><strong> Sub Tarefa : </strong>   <%= subtask.nome%> </H3>
+                  </div>
+                  <div class="panel fundo-vermelho">
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-12 letra-branca">
+                          <H4><strong> Descrição: </strong>   <%= subtask.descricao%> </H4>
+                        </div>
+                      </div>
+
+                    <div class="row">
+                      <div class="col-md-12 letra-branca">
+                        <H4><strong> Data Entrega: </strong>   <%= subtask.entrega.strftime("%d/%m/%Y") %> </H4>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-md-12 letra-branca">
+                        <strong> Puclet:    </strong> 
+                        <% subtask.puclets.each do |puclet| %>
+                          <span class="label label-default margin-left-05"><%= puclet.nome%> </span> 
+                        <% end %>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12 letra-branca">
+                        <strong> Habilidades:   </strong>
+                        <% subtask.habilidades.each do |habilidade| %>
+                        <span class="label label-default margin-left-05"><%= habilidade.nome%> </span> 
+                        <% end %>
+                      </div>
+                    </div>
+                   </div>
+                  </div> 
+                </div>   
+                <%end%>    
               <div id "form" class="form-group">
-                <%= link_to 'Edit', edit_task_path(@task) %>
-                <%= link_to 'Back', tasks_path %>
+              <strong class= "margin-left-10">  <%= link_to 'Edit', edit_task_path(@task),class: "letra-branca" %> </strong>
+              <strong class = "margin-left-10">  <%= link_to 'Back', tasks_path,class: "letra-branca" %> </strong>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-<% end %>
+    </div>  
+ <%end%>  
 </body>

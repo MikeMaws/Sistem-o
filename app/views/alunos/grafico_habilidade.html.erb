@@ -65,7 +65,7 @@
        </div>
        
        <div class = "col-md-6 margin-left-30" align = "center">
-        <div class = "col-md-6 letra-branca" align = "left">
+        <div class = "col-md-8 letra-branca" align = "left">
          <h1> Colaboração: </h1>
          <h1> Construção: </h1>
          <h1> Pensamento critico: </h1>
@@ -73,8 +73,11 @@
          <h1> Criatividade: </h1>
          <h1> Comunicação: </h1>
         </div>
-        <div class = "col-md-6 letra-branca"  align = "left">
-         <h1> <%= (@aval.colaboracao/total * 100).round %> %</h1>
+        <div class = "col-md-4 letra-branca"  align = "left">
+         <% if total == 0 %>
+          <%total = 1%>
+         <%end%>
+         <h1> <%= (@aval.colaboracao/total * 100).round  %> %</h1>
          <h1> <%= (@aval.construcao/total * 100).round %> %</h1>
          <h1> <%= (@aval.pcritico/total * 100).round %> %</h1>
          <h1> <%= (@aval.compromisso/total * 100).round %> %</h1>
@@ -127,9 +130,7 @@
         </div>  
         
       <h1 class="page-header letra-branca  margin-left-05  margin-right-05">Sub Tarefas não concluidas </h1>
-    
-        
-        
+   
        </div>  <!-- fundo vermelho-->   
      </div>    
     </div>   

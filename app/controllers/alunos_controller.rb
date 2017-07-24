@@ -17,21 +17,17 @@ class AlunosController < ApplicationController
   end
 
   def grafico_habilidade
-  @aval= Avaliar.find(params[:user_id])
+  @aval = Avaliar.find(params[:user_id])
   @user = User.find(params[:user_id])
   @answers  = Answer.where(user_id: params[:user_id])
-   
-    subtasks = Subtask.all
-    quant = 1
-    
-    subtasks.each do |q|
-      if q.avaliativa == true
-         quant += 1
-      end
+  
+  value = (@aval.novato + @aval.competente + @aval.mestre)
+    if value == 0
+      value = 1
     end
-    
-    @aval.nota = ((@aval.novato * 70) + (@aval.competente * 85) + (@aval.mestre * 100)) / quant
-    @aval.save
+  @aval.nota = ((@aval.novato * 70) + (@aval.competente * 85) + (@aval.mestre * 100)) / value
+  @aval.save
+  
   end
 
   def profile

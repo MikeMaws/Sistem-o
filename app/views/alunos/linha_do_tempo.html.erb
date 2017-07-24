@@ -22,30 +22,32 @@
        <div class="panel-body margin-left-15">
         <div class="list-group">
          <% @answers.each do |answers| %>
-          
+          <% if answers.user_id != current_user.id %>
           <div class="row list-group-item fundo-verde-claro">
            <%= link_to answers.link , target: :_blank do %>
-             <div class="col-md-5 letra-verde">
-               <h5 class="glyphicon glyphicon-thumbs-up "><strong> <%= answers.subtask.task.nome%> </strong> <small> <%=answers.subtask.nome%> </small> </h5>
+             <div class="col-md-5">
+               <span class="glyphicon glyphicon-thumbs-up letra-vermelha"><span class= "letra-verde"> <%= answers.subtask.task.nome%> </span></span> 
+               <p class = "small letra-vermelha-2"> <%=answers.subtask.nome%> </p>
              </div>
            
-             <div class="col-md-3 letra-verde">
-              <h5 class="glyphicon glyphicon-thumbs-up"> <span class =" badge pull-right"><%= answers.like %> </span></h5>
-              <h5 class="glyphicon glyphicon-thumbs-down"> <span class =" badge pull-right"><%= answers.dislike %> </span> </h5>
-              <h5 class="glyphicon glyphicon-alert"> <span class =" badge pull-right"><%= answers.report %> </span> </h5>
+             <div class="col-md-3 ">
+              <h5 class="glyphicon glyphicon-thumbs-up like-avaliacao"> <span class =" label label-success pull-right"><%= answers.like %> </span></h5>
+              <h5 class="glyphicon glyphicon-thumbs-down like-avaliacao"> <span class =" label label-danger pull-right "><%= answers.dislike %> </span> </h5>
+              <h5 class="glyphicon glyphicon-alert  like-avaliacao "> <span class =" label label-primary pull-right"><%= answers.report %> </span> </h5>
              </div>
              
-               <div class="col-md-3">
-                 <%= link_to "Report", report_answer_url(id: answers.id), method: :post, class: "btn btn-primary pull-right"%>
+               <div class="col-md-4 letra-branca">
+                 <%= link_to "REPORTAR", report_answer_url(id: answers.id), method: :post, class: "btn btn-primary pull-right margin-left-05 btn-avaliacao-3"%>
                  <% if !@likes.exists?({answer_id: answers.id}) %>
-                 <%= link_to "Disike", dislike_answer_url(id: answers.id), method: :post, class: "btn btn-danger pull-right"%>
-                 <%= link_to "Like", like_answer_url(id: answers.id), method: :post, class: "btn btn-success pull-right"%>
+                 <%= link_to "NÃO GOSTEI", dislike_answer_url(id: answers.id), method: :post, class: "btn btn-danger pull-right margin-left-05 btn-avaliacao-2"%>
+                 <%= link_to "GOSTEI", like_answer_url(id: answers.id), method: :post, class: "btn btn-success pull-right margin-left-05 btn-avaliacao"%>
                  <%end%>
                </div>
              
            <%end%>
           </div>
           <%end%>
+         <%end%> 
          </div>
         </div>  
        </div>  <!-- fundo verde-->   

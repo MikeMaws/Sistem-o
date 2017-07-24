@@ -341,6 +341,22 @@ body
 	padding-bottom: 10px;
 }
 
+.letra-vermelha
+{
+	box-shadow: none;
+	color: darken(#e57373  , 10%);
+	font-weight: 600;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.letra-vermelha-2
+{
+	box-shadow: none;
+	color: darken(#e57373  , 10%);
+	font-weight: 600;
+}
+
 .letra-verde
 {
 	box-shadow: none;
@@ -359,6 +375,62 @@ body
 .margin-right-15 { margin-right: 1.5em; }
 .margin-right-30 { margin-right: 3.0em; }
 .margin-bottom-1cm {  margin-bottom: 1cm; }
+
+.btn-avaliacao {
+    color: white;
+		font-weight: 600;
+    padding-top: 15px;
+    height: 50px !important;
+    width:  85px !important;
+    text-align: center;
+}
+
+.like-avaliacao {
+    color: #00695c;
+		font-weight: 600;
+    padding-top: 15px;
+    height: 50px !important;
+    width:  85px !important;
+    text-align: center;
+}
+
+.observacao-avaliacao {
+    color: #00695c;
+		font-weight: 600;
+		font-size: 15px;
+    line-height: 1.42857143;
+    padding-top: 15px;
+    height: 50px !important;
+    width:  230px !important;
+}
+
+.select-avaliacao {
+    color: #00695c;
+		font-weight: 600;
+    height: 50px !important;
+    width:  200px !important;
+    text-align: center;
+}
+
+
+.btn-avaliacao-3 {
+    color: white;
+		font-weight: 600;
+    padding-top: 15px;
+    height: 50px !important;
+    width:  100px !important;
+    text-align: center;
+}
+
+
+.btn-avaliacao-2 {
+    color: white;
+		font-weight: 600;
+    padding-top: 15px;
+    height: 50px !important;
+    width:  115px !important;
+    text-align: center;
+}
 
 h5 {
 	font-weight: 100;
