@@ -21,10 +21,10 @@ class AlunosController < ApplicationController
   @user = User.find(params[:user_id])
   @answers  = Answer.where(user_id: params[:user_id])
    
-    quanttaf = Subtask.all
+    subtasks = Subtask.all
     quant = 1
     
-    quanttaf.each do |q|
+    subtasks.each do |q|
       if q.avaliativa == true
          quant += 1
       end
