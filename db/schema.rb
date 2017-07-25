@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711205206) do
+ActiveRecord::Schema.define(version: 20170725142445) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "subtask_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170711205206) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "nivel", default: 0
+    t.string "observacao", default: "NÃO HÁ PONTOS A SEREM COMENTADOS"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 

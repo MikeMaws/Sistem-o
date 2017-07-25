@@ -110,7 +110,7 @@ class AnswersController < ApplicationController
                avaliar.compromisso += pontos
               else if h.nome == "Criatividade"   
                 avaliar.criatividade += pontos
-                else if h.nome == "Criatividade"   
+                else if h.nome == "Comunicacao"   
                   avaliar.criatividade += pontos
                 end 
               end 

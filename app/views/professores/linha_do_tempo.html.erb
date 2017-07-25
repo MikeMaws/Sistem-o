@@ -25,16 +25,16 @@
              
              <%end%> 
               <div class = "col-md-2 ">  
-               <div class = "like-avaliacao"><%= select_tag 'niveis', options_for_select(@niveis.collect{ |u| [ u.posicao] }), prompt: "Select something", class: "select-avaliacao" %> </div>
+               <div class = "like-avaliacao"><%= myval = select_tag 'niveis', options_for_select(@niveis.collect{ |u| [ u.posicao] }),prompt: "Selecione o nivel",  class: "select-avaliacao" %> </div>
               </div>
                
               <div class = "col-md-2 " > 
-               <div class = "like-avaliacao pull-left"> <%= text_area_tag "descricao", nil ,class: "observacao-avaliacao"%> </div>
+               <div class = "like-avaliacao pull-left"> <%= myobs = text_area_tag "descricao", nil ,class: "observacao-avaliacao"%> </div>
               </div>
               
               <!-- tem que corrigir passar o nivel selecionado -->
               <div class = "col-md-1"> 
-                <div class = "like-avaliacao pull-left"><%= link_to "Corrigir", nivel_answer_url(id: answers.id, nivel: 1), method: :post, class: "btn btn-success pull-right btn-avaliacao"%></div> 
+                <div class = "like-avaliacao pull-left"><%= link_to "Corrigir", nivel_answer_url(id: answers.id, nivel: myval, observacao: myobs), method: :post, class: "btn btn-success pull-right btn-avaliacao"%></div> 
               </div>
               
             </div>
